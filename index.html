@@ -7,6 +7,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
     <title>EmotionSpace - App Móvil</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --bg-color: white;
@@ -47,33 +48,31 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            overflow: hidden; /* Evita el scroll del body si el contenido interno tiene scroll */
+            overflow: hidden;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* App Container - Esto simula el "marco" del celular */
         .app-container {
-            max-width: 400px; /* Ancho típico de un celular */
+            max-width: 400px;
             width: 100%;
-            height: 90vh; /* Altura para simular la pantalla */
+            height: 90vh;
             margin: 0 auto;
             background: var(--bg-color);
             color: var(--text-color);
             position: relative;
-            overflow-y: auto; /* Permite scroll dentro del contenedor de la app */
+            overflow-y: auto;
             overflow-x: hidden;
             transition: background-color 0.3s, color 0.3s;
-            border-radius: 30px; /* Bordes redondeados del celular */
-            box-shadow: 0 0 0 10px rgba(0,0,0,0.1), /* Borde exterior */
-                          0 0 0 12px #333, /* Borde más oscuro como chasis */
-                          0 20px 50px rgba(0,0,0,0.4); /* Sombra para profundidad */
-            -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+            border-radius: 30px;
+            box-shadow: 0 0 0 10px rgba(0,0,0,0.1),
+                          0 0 0 12px #333,
+                          0 20px 50px rgba(0,0,0,0.4);
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* Status Bar */
         .status-bar {
             height: 44px;
             background: linear-gradient(135deg, #667eea, #764ba2);
@@ -86,12 +85,11 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            width: 100%; /* Asegura que ocupe todo el ancho del app-container */
+            width: 100%;
         }
 
-        /* Tab Navigation */
         .tab-navigation {
-            position: sticky; /* Cambiado a sticky para que flote al final del contenido o de la pantalla si hay poco */
+            position: sticky;
             bottom: 0;
             left: 0;
             right: 0;
@@ -104,7 +102,7 @@
             z-index: 1000;
             box-shadow: 0 -2px 20px rgba(0,0,0,0.1);
             padding-bottom: env(safe-area-inset-bottom);
-            width: 100%; /* Asegura que ocupe todo el ancho del app-container */
+            width: 100%;
         }
 
         .tab-item {
@@ -117,6 +115,8 @@
             cursor: pointer;
             position: relative;
             color: var(--secondary-text-color);
+            flex-grow: 1; /* Para que ocupen el espacio equitativamente */
+            text-align: center;
         }
 
         .tab-item.active {
@@ -127,17 +127,14 @@
         .tab-item .icon { font-size: 18px; margin-bottom: 4px; }
         .tab-item .label { font-size: 10px; font-weight: 600; }
 
-        /* Content Sections */
         .content-section {
             display: none;
             padding: 20px;
-            /* No need for padding-bottom: 100px here as the tab-navigation is sticky/fixed */
-            min-height: calc(100% - 44px); /* Altura restante después de la status bar */
-            box-sizing: border-box; /* Incluye padding en el cálculo de altura */
+            min-height: calc(100% - 44px);
+            box-sizing: border-box;
         }
-        /* Ajuste para que el contenido no se quede por debajo de la barra de navegación al final del scroll */
         .content-section:last-of-type {
-            padding-bottom: 100px; /* Asegura espacio para la barra de navegación al final del contenido */
+            padding-bottom: 100px;
         }
 
 
@@ -164,7 +161,6 @@
             border: 1px solid var(--card-border-color);
         }
 
-        /* Video Container */
         .video-container {
             background: var(--card-bg-color);
             border-radius: 20px;
@@ -175,7 +171,6 @@
         .video-embed { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; overflow: hidden; border-radius: 12px; background: #000; }
         .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        /* Emotion & Stat Cards */
         .emotions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
         .emotion-card {
             background: var(--card-bg-color);
@@ -198,22 +193,20 @@
         .stat-number, .diary-stat-number { font-size: 32px; font-weight: 800; color: var(--primary-accent); margin-bottom: 8px; line-height: 1; }
         .stat-label, .diary-stat-label { color: var(--secondary-text-color); font-weight: 600; font-size: 12px; }
 
-        /* Floating Action Button */
         .fab {
             position: fixed;
-            bottom: 100px; /* Ajustado para estar sobre la barra de navegación */
-            right: calc(50% - 200px + 20px); /* Centra la app y luego lo desplaza a la derecha */
-            width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); border: none; color: white; font-size: 24px; cursor: pointer; box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); transition: all 0.3s ease; z-index: 999;
+            bottom: 100px;
+            right: calc(50% - 200px + 20px);
+            width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); border: none; color: white; font-size: 24px; cursor: pointer;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); transition: all 0.3s ease; z-index: 999;
         }
-        /* Media query para ajustar FAB si la pantalla es más pequeña que el max-width del contenedor */
         @media (max-width: 420px) {
             .fab {
-                right: 20px; /* Vuelve a la derecha normal si la pantalla es pequeña */
+                right: 20px;
             }
         }
         .fab:active { transform: scale(0.9); }
 
-        /* Buttons */
         .btn-mobile { padding: 16px 24px; border: none; border-radius: 16px; font-weight: 600; cursor: pointer; font-size: 16px; transition: all 0.3s ease; position: relative; overflow: hidden; }
         .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); }
         .btn-secondary { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3); }
@@ -222,23 +215,19 @@
         .control-buttons { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
         .control-buttons.row { flex-direction: row; justify-content: center; gap: 16px; }
 
-        /* Mood Selection */
         .mood-input { display: flex; justify-content: space-around; margin-top: 20px; }
         .mood-emoji { width: 60px; height: 60px; font-size: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; cursor: pointer; transition: all 0.3s ease; background: #f8f9fa; }
         .mood-emoji:active { transform: scale(0.9); }
         .mood-emoji.selected { background: linear-gradient(135deg, #667eea, #764ba2); transform: scale(1.1); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
 
-        /* Breathing Circle */
         .breathing-circle { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); margin: 20px auto; animation: breathe 4s infinite; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; font-weight: 600; }
         @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
         
-        /* Game Styles */
         .game-area { width: 100%; height: 250px; background: var(--subtle-bg-color); border-radius: 12px; margin-top: 16px; position: relative; overflow: hidden; }
         .bubble { position: absolute; bottom: -20px; background: rgba(102, 126, 234, 0.5); border-radius: 50%; animation: float 5s infinite; cursor: pointer; }
         @keyframes float { 0% { transform: translateY(0); } 100% { transform: translateY(-300px); } }
 
-        /* Memory Game Styles */
         .memory-game-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; height: 300px; padding: 12px; box-sizing: border-box; }
         .memory-card { background: var(--subtle-bg-color); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; transition: transform 0.6s; transform-style: preserve-3d; position: relative; }
         .memory-card.flip { transform: rotateY(180deg); }
@@ -247,7 +236,6 @@
         .memory-card.match .front-face { color: var(--positive-color); }
         .game-score { display: flex; justify-content: space-around; font-size: 14px; font-weight: 600; margin-bottom: 16px; }
 
-        /* Modal Styles */
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: flex-end; z-index: 2000; }
         .modal.show { display: flex; }
         .modal-content { background: var(--card-bg-color); border-radius: 20px 20px 0 0; padding: 24px; width: 100%; max-height: 80vh; overflow-y: auto; transform: translateY(100%); transition: transform 0.3s ease; }
@@ -260,7 +248,6 @@
         .advice-list { list-style: none; }
         .advice-list li { background: var(--subtle-bg-color); padding: 12px 16px; margin-bottom: 8px; border-radius: 12px; border-left: 4px solid var(--primary-accent); line-height: 1.5; }
 
-        /* Diary & Forms */
         .diary-entry { background: var(--subtle-bg-color); border-radius: 16px; padding: 20px; margin-bottom: 16px; border-left: 4px solid var(--primary-accent); position: relative; }
         .diary-entry-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .diary-date { font-size: 14px; color: var(--primary-accent); font-weight: 600; }
@@ -279,7 +266,6 @@
         .mood-option .mood-icon { font-size: 32px; margin-bottom: 4px; }
         .mood-option .mood-label { font-size: 12px; font-weight: 600; color: var(--secondary-text-color); }
 
-        /* Neuro/Learn Section */
         .neuro-item { background: var(--subtle-bg-color); padding: 16px; margin-bottom: 12px; border-radius: 12px; border-left: 4px solid var(--primary-accent); cursor: pointer; transition: all 0.3s ease; }
         .neuro-item:hover { transform: translateX(5px); }
         .neuro-item strong { color: var(--primary-accent); display: block; margin-bottom: 8px; }
@@ -287,7 +273,6 @@
         .neuro-explanation.show { display: block; animation: slideDown 0.5s ease; }
         @keyframes slideDown { from { opacity: 0; max-height: 0; } to { opacity: 1; max-height: 500px; } }
 
-        /* Profile Section & Dark Mode Toggle */
         .preference-item { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--card-border-color); }
         .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
         .switch input { opacity: 0; width: 0; height: 0; }
@@ -296,76 +281,65 @@
         input:checked + .slider { background-color: var(--primary-accent); }
         input:checked + .slider:before { transform: translateX(22px); }
         
-        .profile-picture-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 24px;
-        }
+        .profile-picture-container { display: flex; justify-content: center; align-items: center; margin-bottom: 24px; }
         .profile-emoji {
-            width: 100px;
-            height: 100px;
-            background: var(--subtle-bg-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            border: 4px solid var(--primary-accent);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            color: var(--text-color);
+            width: 100px; height: 100px; background: var(--subtle-bg-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; border: 4px solid var(--primary-accent); box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: var(--text-color);
         }
 
-        /* == NUEVOS ESTILOS PARA EL SELECTOR DE EMOJIS == */
-        .emoji-selector-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            background: var(--subtle-bg-color);
-            padding: 16px;
-            border-radius: 16px;
-        }
-        .emoji-choice {
-            font-size: 28px;
-            padding: 8px;
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            border: 2px solid transparent;
-        }
-        .emoji-choice:hover {
-            background: rgba(102, 126, 234, 0.1);
-        }
-        .emoji-choice.selected {
-            border-color: var(--primary-accent);
-            transform: scale(1.15);
-            background: var(--bg-color);
-        }
-        /* ============================================== */
+        .emoji-selector-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; background: var(--subtle-bg-color); padding: 16px; border-radius: 16px; }
+        .emoji-choice { font-size: 28px; padding: 8px; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease-in-out; border: 2px solid transparent; }
+        .emoji-choice:hover { background: rgba(102, 126, 234, 0.1); }
+        .emoji-choice.selected { border-color: var(--primary-accent); transform: scale(1.15); background: var(--bg-color); }
 
-        /* Toast Notifications */
         .toast {
-            position: fixed;
-            top: 60px;
-            left: 50%; /* Centra el toast con respecto al app-container */
-            transform: translateX(-50%) translateY(-100px); /* Ajusta para centrar y animar */
-            width: calc(100% - 40px); /* Ancho dentro del app-container */
-            max-width: 360px; /* Limita el ancho del toast */
-            background: var(--card-bg-color); border: 1px solid var(--card-border-color); color: var(--text-color); border-radius: 12px; padding: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); opacity: 0; transition: all 0.3s ease; z-index: 1500; border-left-width: 4px;
+            position: fixed; top: 60px; left: 50%; transform: translateX(-50%) translateY(-100px); width: calc(100% - 40px); max-width: 360px; background: var(--card-bg-color); border: 1px solid var(--card-border-color); color: var(--text-color); border-radius: 12px; padding: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); opacity: 0; transition: all 0.3s ease; z-index: 1500; border-left-width: 4px;
         }
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
         .toast.success { border-left-color: #4facfe; }
         .toast.warning { border-left-color: #f5576c; }
         
+        /* === NUEVOS ESTILOS PARA PANTALLA DE BIENVENIDA Y EJERCICIOS === */
+        .welcome-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 3000;
+            display: none; /* Se muestra con JS */
+            justify-content: center; align-items: center;
+            padding: 20px;
+        }
+        .welcome-overlay.show { display: flex; }
+        .welcome-content {
+            background: var(--card-bg-color); color: var(--text-color);
+            padding: 32px; border-radius: 20px;
+            max-width: 380px; text-align: center;
+        }
+
+        .breathing-guide-modal { text-align: center; }
+        #breathingInstruction { font-size: 20px; font-weight: 600; margin: 20px 0; color: var(--primary-accent); }
+        .progress-bar-container { width: 100%; height: 10px; background: var(--subtle-bg-color); border-radius: 5px; overflow: hidden; }
+        #breathingProgressBar { width: 0%; height: 100%; background: var(--primary-accent); transition: width 0.1s linear; }
+
     </style>
 </head>
 <body>
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <div class="welcome-content">
+            <h2 class="section-title">¡Bienvenido/a!</h2>
+            <p class="section-subtitle" style="margin-bottom: 24px;">Personaliza tu espacio para comenzar.</p>
+            <form id="welcomeForm" onsubmit="saveWelcomeProfile(event)">
+                <div class="form-group">
+                    <label for="welcomeUsernameInput" class="form-label">Tu Nombre</label>
+                    <input type="text" id="welcomeUsernameInput" class="form-input" placeholder="¿Cómo te llamas?" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Elige tu Emoji</label>
+                    <div id="welcomeEmojiSelector" class="emoji-selector-grid"></div>
+                    <input type="hidden" id="welcomeSelectedEmojiInput" value="">
+                </div>
+                <button type="submit" class="btn-mobile btn-primary" style="width:100%;">Comenzar Viaje</button>
+            </form>
+        </div>
+    </div>
+
     <div class="app-container">
         <div class="status-bar">EmotionSpace 💙</div>
 
@@ -399,13 +373,14 @@
             </div>
 
             <div class="card mood-section">
-                <h3>Estadísticas</h3>
+                <h3>Estadísticas Rápidas</h3>
                 <div class="stats-grid">
                     <div class="stat-card"><div class="stat-number" id="totalInteractions">0</div><div class="stat-label">Interacciones</div></div>
                     <div class="stat-card"><div class="stat-number" id="positiveEmotions">0%</div><div class="stat-label">Emociones Positivas</div></div>
                     <div class="stat-card"><div class="stat-number" id="currentMood">---</div><div class="stat-label">Estado Actual</div></div>
                     <div class="stat-card"><div class="stat-number" id="moodStreak">0</div><div class="stat-label">Días Seguidos</div></div>
                 </div>
+                <button class="btn-mobile btn-primary" style="width:100%; margin-top: 20px;" onclick="navigateToHistory()">📊 Ver historial completo</button>
             </div>
         </div>
 
@@ -420,11 +395,37 @@
             </div>
             <div class="emotions-grid" id="emotionsGrid"></div>
         </div>
+        
+        <div class="content-section" id="history">
+            <div class="section-header">
+                <div class="section-title">Mi Historial</div>
+                <div class="section-subtitle">Visualiza la evolución de tus emociones</div>
+            </div>
+            <div class="card">
+                <h3>Distribución de Estados de Ánimo</h3>
+                <p>Basado en tus entradas del diario.</p>
+                <canvas id="moodDistributionChart" height="250"></canvas>
+            </div>
+            <div class="card">
+                <h3>Actividad del Diario</h3>
+                <p>Entradas registradas en la última semana.</p>
+                <canvas id="diaryActivityChart" height="250"></canvas>
+            </div>
+        </div>
 
         <div class="content-section" id="game">
             <div class="section-header">
                 <div class="section-title">Relájate y Juega</div>
                 <div class="section-subtitle">Juegos para calmar la mente y liberar la tensión</div>
+            </div>
+            
+             <div class="card">
+                <h3>🧘‍♀️ Respiración Guiada</h3>
+                <p>Elige una técnica para centrarte y encontrar la calma.</p>
+                <div class="control-buttons">
+                    <button class="btn-mobile btn-primary" onclick="startBreathingExercise('4-7-8')">Respiración 4-7-8</button>
+                    <button class="btn-mobile btn-success" onclick="startBreathingExercise('cuadrada')">Respiración Cuadrada</button>
+                </div>
             </div>
             
             <div class="card game-container">
@@ -454,7 +455,6 @@
                     <button class="btn-mobile btn-secondary" onclick="resetMemoryGame()">🔄 Reiniciar</button>
                 </div>
             </div>
-
         </div>
 
         <div class="content-section" id="diary">
@@ -523,8 +523,7 @@
                 <form id="profileForm" onsubmit="saveProfile(event)">
                     <div class="form-group">
                         <label class="form-label">Elige tu Emoji</label>
-                        <div id="emojiSelector" class="emoji-selector-grid">
-                            </div>
+                        <div id="emojiSelector" class="emoji-selector-grid"></div>
                         <input type="hidden" id="selectedEmojiInput" value="👤">
                     </div>
                     <div class="form-group">
@@ -533,6 +532,11 @@
                     </div>
                     <button type="submit" class="btn-mobile btn-primary" style="width:100%;">Guardar Perfil</button>
                 </form>
+            </div>
+
+             <div class="card">
+                <h3>Acerca de EmotionSpace</h3>
+                <p style="text-align: justify; line-height: 1.6;"><strong>EmotionSpace</strong> es tu compañero digital para el bienestar emocional. Nuestra misión es ofrecerte un espacio seguro y privado para explorar, entender y gestionar tus emociones a través de herramientas interactivas, un diario personal y contenido educativo basado en la ciencia.</p>
             </div>
 
             <div class="card">
@@ -554,9 +558,11 @@
                 </div>
             </div>
         </div>
+        
         <div class="tab-navigation">
             <div class="tab-item active" onclick="showSection('home', this)"><div class="icon">🏠</div><div class="label">Inicio</div></div>
             <div class="tab-item" onclick="showSection('emotions', this)"><div class="icon">💖</div><div class="label">Emociones</div></div>
+            <div class="tab-item" onclick="showSection('history', this)"><div class="icon">📊</div><div class="label">Historial</div></div>
             <div class="tab-item" onclick="showSection('game', this)"><div class="icon">🎮</div><div class="label">Juego</div></div>
             <div class="tab-item" onclick="showSection('diary', this)"><div class="icon">📔</div><div class="label">Diario</div></div>
             <div class="tab-item" onclick="showSection('learn', this)"><div class="icon">🧠</div><div class="label">Aprende</div></div>
@@ -583,6 +589,11 @@
              <div class="advice-section" id="actividadesSection">
                 <h4>🏃 Actividades Sugeridas</h4>
                 <ul id="activityList" class="advice-list"></ul>
+            </div>
+             <div class="advice-section breathing-guide-modal" id="breathingGuide" style="display: none;">
+                <h3 id="breathingTitle"></h3>
+                <div id="breathingInstruction">Prepárate...</div>
+                <div class="progress-bar-container"><div id="breathingProgressBar"></div></div>
             </div>
         </div>
     </div>
@@ -627,10 +638,7 @@
                 activities: ['Escribe una carta de agradecimiento (aunque no la envíes).', 'Haz un favor a alguien sin esperar nada a cambio.', 'Crea un frasco de la gratitud con notas diarias.']
             }
         };
-        
-        // NUEVO: Opciones de emojis para el perfil
         const EMOJI_PROFILE_OPTIONS = ['😀', '😎', '😇', '🥰', '🤔', '😴', '🥳', '🤯', '💖', '🚀', '🌟', '👤'];
-
         let emotionLevels = {};
         let currentPromptIndex = 0;
         const writingPrompts = [
@@ -641,24 +649,38 @@
             "Escribe sobre un desafío que superaste y qué aprendiste de él."
         ];
         
+        // === NUEVO: VARIABLES PARA GRÁFICOS ===
+        let moodDistributionChart = null;
+        let diaryActivityChart = null;
+        
         // ===================================
         // INITIALIZATION
         // ===================================
         document.addEventListener('DOMContentLoaded', () => {
+            // === MODIFICADO: LÓGICA DE BIENVENIDA ===
+            const username = localStorage.getItem('username');
+            if (!username) {
+                showWelcomeOverlay();
+            } else {
+                initializeApp();
+            }
+        });
+        
+        function initializeApp() {
             loadState();
             renderEmotions();
             renderDiaryForm();
             renderDiaryEntries();
             updateStats();
             setupMemoryGame();
-            initializeEmojiSelector(); // NUEVO: Iniciar el selector de emojis
+            initializeEmojiSelector('profile'); // Selector para la página de perfil
             loadProfile();
             const savedMode = localStorage.getItem('darkMode');
             if (savedMode === 'true') {
                 document.getElementById('darkModeToggle').checked = true;
                 toggleDarkMode(true);
             }
-        });
+        }
 
         // ===================================
         // NAVIGATION & UI
@@ -670,11 +692,27 @@
             document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
             element.classList.add('active');
 
+            // === AÑADIDO: RENDERIZAR GRÁFICOS AL MOSTRAR LA SECCIÓN ===
+            if (sectionId === 'history') {
+                renderHistoryCharts();
+            }
+
             const fab = document.querySelector('.fab');
             if (sectionId === 'diary') {
-                fab.style.transform = 'scale(0)';
+                fab.style.display = 'none';
             } else {
-                fab.style.transform = 'scale(1)';
+                fab.style.display = 'flex';
+                 // Reajustar la posición del FAB para centrarlo
+                fab.style.alignItems = 'center';
+                fab.style.justifyContent = 'center';
+            }
+        }
+        
+        // === NUEVA FUNCIÓN DE NAVEGACIÓN ===
+        function navigateToHistory() {
+            const historyTab = document.querySelector('.tab-item[onclick*="history"]');
+            if (historyTab) {
+                showSection('history', historyTab);
             }
         }
 
@@ -688,48 +726,90 @@
             }, 3000);
         }
 
-        function openModal(emotionKey) {
-            const emotion = emotionsData[emotionKey];
-            document.getElementById('modalEmoji').textContent = emotion.icon;
-            document.getElementById('modalTitle').textContent = emotion.name;
-            document.getElementById('modalDescription').textContent = emotion.description;
+        function openModal(emotionKey, type = 'emotion') {
+            const modal = document.getElementById('emotionModal');
+            const modalContent = modal.querySelector('.modal-content');
             
-            const adviceList = document.getElementById('adviceList');
-            adviceList.innerHTML = emotion.advice.map(item => `<li>${item}</li>`).join('');
-            
-            const activityList = document.getElementById('activityList');
-            activityList.innerHTML = emotion.activities.map(item => `<li>${item}</li>`).join('');
-            
-            document.getElementById('emotionModal').classList.add('show');
+            // Ocultar todas las secciones del modal
+            modalContent.querySelectorAll('.advice-section').forEach(sec => sec.style.display = 'none');
+
+            if (type === 'emotion') {
+                const emotion = emotionsData[emotionKey];
+                document.getElementById('modalEmoji').textContent = emotion.icon;
+                document.getElementById('modalTitle').textContent = emotion.name;
+                document.getElementById('modalDescription').textContent = emotion.description;
+                document.getElementById('consejosSection').style.display = 'block';
+                document.getElementById('actividadesSection').style.display = 'block';
+                
+                const adviceList = document.getElementById('adviceList');
+                adviceList.innerHTML = emotion.advice.map(item => `<li>${item}</li>`).join('');
+                const activityList = document.getElementById('activityList');
+                activityList.innerHTML = emotion.activities.map(item => `<li>${item}</li>`).join('');
+
+            } else if (type === 'breathing') {
+                // Configurar modal para ejercicios de respiración
+                document.getElementById('modalEmoji').textContent = '🧘‍♀️';
+                document.getElementById('modalDescription').textContent = 'Sigue las instrucciones en pantalla.';
+                document.getElementById('breathingGuide').style.display = 'block';
+            }
+
+            modal.classList.add('show');
         }
+
 
         function closeModal() {
             document.getElementById('emotionModal').classList.remove('show');
+            // === AÑADIDO: Detener ejercicio de respiración al cerrar ===
+            stopBreathingExercise();
         }
         
         // ===================================
-        // PROFILE MANAGEMENT
+        // PROFILE & WELCOME MANAGEMENT
         // ===================================
+        function showWelcomeOverlay() {
+            const overlay = document.getElementById('welcomeOverlay');
+            overlay.classList.add('show');
+            initializeEmojiSelector('welcome');
+        }
 
-        // NUEVA FUNCIÓN para crear las opciones de emojis
-        function initializeEmojiSelector() {
-            const container = document.getElementById('emojiSelector');
-            container.innerHTML = ''; // Limpiar por si acaso
+        function initializeEmojiSelector(context) {
+            const selectorId = context === 'welcome' ? 'welcomeEmojiSelector' : 'emojiSelector';
+            const inputId = context === 'welcome' ? 'welcomeSelectedEmojiInput' : 'selectedEmojiInput';
+            const displayId = context === 'profile' ? 'profileEmojiDisplay' : null;
+            
+            const container = document.getElementById(selectorId);
+            container.innerHTML = ''; 
             EMOJI_PROFILE_OPTIONS.forEach(emoji => {
                 const choice = document.createElement('div');
                 choice.classList.add('emoji-choice');
                 choice.textContent = emoji;
                 choice.onclick = () => {
-                    // Actualizar la selección visual
                     container.querySelectorAll('.emoji-choice').forEach(el => el.classList.remove('selected'));
                     choice.classList.add('selected');
-
-                    // Actualizar el display principal y el input oculto
-                    document.getElementById('profileEmojiDisplay').textContent = emoji;
-                    document.getElementById('selectedEmojiInput').value = emoji;
+                    document.getElementById(inputId).value = emoji;
+                    if (displayId) {
+                        document.getElementById(displayId).textContent = emoji;
+                    }
                 };
                 container.appendChild(choice);
             });
+        }
+        
+        function saveWelcomeProfile(event) {
+            event.preventDefault();
+            const username = document.getElementById('welcomeUsernameInput').value.trim();
+            const emoji = document.getElementById('welcomeSelectedEmojiInput').value.trim();
+            
+            if (!username || !emoji) {
+                alert('Por favor, completa tu nombre y elige un emoji.');
+                return;
+            }
+            
+            localStorage.setItem('username', username);
+            localStorage.setItem('userEmoji', emoji);
+            
+            document.getElementById('welcomeOverlay').classList.remove('show');
+            initializeApp();
         }
         
         function updateProfileEmoji(emoji) {
@@ -739,8 +819,6 @@
                 if (profileTabIcon) {
                     profileTabIcon.textContent = emoji;
                 }
-                
-                // Actualizar selección en la cuadrícula
                 const container = document.getElementById('emojiSelector');
                 container.querySelectorAll('.emoji-choice').forEach(el => {
                     el.classList.toggle('selected', el.textContent === emoji);
@@ -749,7 +827,6 @@
             }
         }
 
-        // MODIFICADA: Ahora guarda desde el selector
         function saveProfile(event) {
             event.preventDefault();
             const usernameInput = document.getElementById('usernameInput');
@@ -757,7 +834,6 @@
             const username = usernameInput.value.trim();
             const emoji = emojiInput.value.trim();
             let saved = false;
-
             if (username) {
                 localStorage.setItem('username', username);
                 document.getElementById('welcomeUsername').textContent = username;
@@ -766,7 +842,7 @@
 
             if (emoji) {
                 localStorage.setItem('userEmoji', emoji);
-                updateProfileEmoji(emoji); // Esta función ya actualiza la UI
+                updateProfileEmoji(emoji);
                 saved = true;
             }
             
@@ -775,7 +851,6 @@
             }
         }
         
-        // MODIFICADA: Ahora carga y resalta la selección del emoji
         function loadProfile() {
             const savedUsername = localStorage.getItem('username') || 'Usuario';
             document.getElementById('usernameInput').value = savedUsername;
@@ -785,8 +860,7 @@
             updateProfileEmoji(savedEmoji);
         }
         
-        // El resto del código JavaScript permanece sin cambios...
-        // ... (todo el código de emociones, diario, juegos, etc.) ...
+        // === El resto del código JS sigue aquí ===
         
         // ===================================
         // EMOTIONS MANAGEMENT
@@ -807,7 +881,7 @@
                 `;
                 card.onclick = () => {
                     updateEmotionLevel(key, 10);
-                    openModal(key);
+                    openModal(key, 'emotion');
                 };
                 grid.appendChild(card);
             }
@@ -868,7 +942,8 @@
         // DIARY MANAGEMENT
         // ===================================
         function toggleDiaryForm() {
-            showSection('diary', document.querySelector('.tab-item[onclick*="diary"]'));
+            const diaryTab = document.querySelector('.tab-item[onclick*="diary"]');
+            showSection('diary', diaryTab);
             const form = document.getElementById('diaryForm');
             form.classList.toggle('show');
             if (form.classList.contains('show')) {
@@ -885,7 +960,6 @@
             const entryMood = isEditing ? entryToEdit.mood : '😊';
 
             const moodOptions = ['😄', '😊', '😐', '😢', '😠', '😌', '🥰'];
-
             formContainer.innerHTML = `
                 <form onsubmit="saveDiaryEntry(event, ${entryId}, ${isEditing})">
                     <div class="form-group">
@@ -923,7 +997,7 @@
 
         function cancelDiaryEdit() {
             document.getElementById('diaryForm').classList.remove('show');
-            renderDiaryForm(); // Reset form to new entry mode
+            renderDiaryForm(); 
         }
         
         function saveDiaryEntry(event, entryId, isEditing) {
@@ -934,7 +1008,6 @@
                 content: document.getElementById('diaryContent').value,
                 mood: document.getElementById('diaryMoodInput').value
             };
-            
             let entries = JSON.parse(localStorage.getItem('diaryEntries') || '[]');
             if (isEditing) {
                 entries = entries.map(entry => entry.id === entryId ? newEntry : entry);
@@ -1015,7 +1088,7 @@
                 document.getElementById('gameTime').textContent = gameTime;
                 if (gameTime <= 0) {
                     endGame();
-                }
+                 }
             }, 1000);
         }
 
@@ -1041,11 +1114,11 @@
             const gameArea = document.getElementById('gameArea');
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
-            const size = Math.random() * 40 + 20; // 20px to 60px
+            const size = Math.random() * 40 + 20; 
             bubble.style.width = `${size}px`;
             bubble.style.height = `${size}px`;
             bubble.style.left = `${Math.random() * (gameArea.clientWidth - size)}px`;
-            bubble.style.animationDuration = `${Math.random() * 3 + 4}s`; // 4 to 7 seconds
+            bubble.style.animationDuration = `${Math.random() * 3 + 4}s`;
             
             bubble.onclick = () => {
                 bubble.remove();
@@ -1072,7 +1145,6 @@
             const gameArea = document.getElementById('memoryGameArea');
             gameArea.innerHTML = '';
             memoryCards = [...cardEmojis, ...cardEmojis].sort(() => 0.5 - Math.random());
-            
             memoryCards.forEach(emoji => {
                 const card = document.createElement('div');
                 card.classList.add('memory-card');
@@ -1142,7 +1214,7 @@
             document.getElementById('memoryTries').textContent = memoryTries;
             document.getElementById('memoryMatches').textContent = memoryMatches;
             document.querySelectorAll('.memory-card').forEach(card => card.classList.remove('flip', 'match'));
-            setTimeout(setupMemoryGame, 500); // Shuffle and reset
+            setTimeout(setupMemoryGame, 500);
         }
         
         // ===================================
@@ -1157,7 +1229,6 @@
                     exp.classList.remove('show');
                 }
             });
-            
             explanation.classList.toggle('show');
         }
 
@@ -1211,7 +1282,7 @@
         }
 
         // ===================================
-        // BREATHING CIRCLE ANIMATION
+        // BREATHING CIRCLE & EXERCISES
         // ===================================
         const breathingCircle = document.getElementById('breathingCircle');
         let breathState = 'in';
@@ -1225,6 +1296,127 @@
             }
         }, 2000);
 
+        // === NUEVAS FUNCIONES PARA RESPIRACIÓN GUIADA ===
+        let breathingInterval = null;
+        function startBreathingExercise(type) {
+            stopBreathingExercise(); // Asegura que no haya otro corriendo
+            openModal(null, 'breathing');
+            
+            const title = document.getElementById('breathingTitle');
+            const instruction = document.getElementById('breathingInstruction');
+            const progressBar = document.getElementById('breathingProgressBar');
+            
+            let sequence;
+            if (type === '4-7-8') {
+                title.textContent = 'Respiración 4-7-8';
+                sequence = [
+                    { phase: 'Inhala', duration: 4 },
+                    { phase: 'Sostén', duration: 7 },
+                    { phase: 'Exhala', duration: 8 }
+                ];
+            } else { // Cuadrada
+                title.textContent = 'Respiración Cuadrada';
+                sequence = [
+                    { phase: 'Inhala', duration: 4 },
+                    { phase: 'Sostén', duration: 4 },
+                    { phase: 'Exhala', duration: 4 },
+                    { phase: 'Sostén', duration: 4 }
+                ];
+            }
+            
+            let currentPhaseIndex = 0;
+            function runPhase() {
+                const phase = sequence[currentPhaseIndex];
+                instruction.textContent = `${phase.phase} (${phase.duration}s)`;
+                
+                let progress = 0;
+                progressBar.style.transition = 'none';
+                progressBar.style.width = '0%';
+                
+                const totalDuration = phase.duration * 1000;
+                const intervalTime = 100; // ms
+                
+                breathingInterval = setInterval(() => {
+                    progress += intervalTime;
+                    progressBar.style.transition = `width ${intervalTime / 1000}s linear`;
+                    progressBar.style.width = `${(progress / totalDuration) * 100}%`;
+
+                    if (progress >= totalDuration) {
+                        clearInterval(breathingInterval);
+                        currentPhaseIndex = (currentPhaseIndex + 1) % sequence.length;
+                        runPhase();
+                    }
+                }, intervalTime);
+            }
+            runPhase();
+        }
+
+        function stopBreathingExercise() {
+            clearInterval(breathingInterval);
+            breathingInterval = null;
+        }
+        
+        // ===================================
+        // === NUEVO: LÓGICA DE GRÁFICOS ===
+        // ===================================
+        function renderHistoryCharts() {
+            const entries = JSON.parse(localStorage.getItem('diaryEntries') || '[]');
+            
+            // Gráfico 1: Distribución de Estados de Ánimo
+            const moodCounts = entries.reduce((acc, entry) => {
+                acc[entry.mood] = (acc[entry.mood] || 0) + 1;
+                return acc;
+            }, {});
+            
+            const moodCtx = document.getElementById('moodDistributionChart').getContext('2d');
+            if (moodDistributionChart) moodDistributionChart.destroy();
+            moodDistributionChart = new Chart(moodCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(moodCounts),
+                    datasets: [{
+                        label: 'Estados de Ánimo',
+                        data: Object.values(moodCounts),
+                        backgroundColor: ['#fdd835', '#64b5f6', '#e57373', '#ba68c8', '#81c784', '#ffb74d', '#4dd0e1'],
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+
+            // Gráfico 2: Actividad del Diario (Últimos 7 días)
+            const activityData = {};
+            for (let i = 6; i >= 0; i--) {
+                const d = new Date();
+                d.setDate(d.getDate() - i);
+                const key = d.toISOString().split('T')[0];
+                activityData[key] = 0;
+            }
+            entries.forEach(entry => {
+                if (activityData[entry.date] !== undefined) {
+                    activityData[entry.date]++;
+                }
+            });
+
+            const activityCtx = document.getElementById('diaryActivityChart').getContext('2d');
+            if (diaryActivityChart) diaryActivityChart.destroy();
+            diaryActivityChart = new Chart(activityCtx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(activityData).map(d => new Date(d).toLocaleDateString('es-ES', {weekday: 'short'})),
+                    datasets: [{
+                        label: 'Entradas por Día',
+                        data: Object.values(activityData),
+                        backgroundColor: '#667eea',
+                    }]
+                },
+                options: { 
+                    responsive: true, 
+                    maintainAspectRatio: false,
+                    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                }
+            });
+        }
+        
     </script>
 </body>
 </html>
