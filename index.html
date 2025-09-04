@@ -115,7 +115,7 @@
             cursor: pointer;
             position: relative;
             color: var(--secondary-text-color);
-            flex-grow: 1; /* Para que ocupen el espacio equitativamente */
+            flex-grow: 1;
             text-align: center;
         }
 
@@ -182,22 +182,31 @@
         }
         .emotion-card:active { transform: scale(0.95); }
         .emotion-card.active { transform: scale(1.05); box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3); border-color: #667eea; }
-        .emotion-icon { width: 50px; height: 50px; margin: 0 auto 12px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; animation: pulse 2s infinite; }
+        .emotion-icon { width: 50px; height: 50px; margin: 0 auto 12px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; animation: pulse 2s infinite;
+        }
         .emotion-name { font-size: 16px; font-weight: 700; color: var(--text-color); margin-bottom: 8px; text-align: center; }
         .level-bar { height: 6px; background: #f0f0f0; border-radius: 3px; overflow: hidden; margin-top: 8px; }
-        .level-fill { height: 100%; border-radius: 3px; transition: width 1s ease-out; background: linear-gradient(90deg, #667eea, #764ba2); }
-        .level-percentage { font-size: 12px; font-weight: 600; color: var(--secondary-text-color); text-align: center; margin-top: 4px; }
+        .level-fill { height: 100%; border-radius: 3px; transition: width 1s ease-out;
+            background: linear-gradient(90deg, #667eea, #764ba2); }
+        .level-percentage { font-size: 12px; font-weight: 600; color: var(--secondary-text-color);
+            text-align: center; margin-top: 4px; }
 
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
-        .stat-card, .diary-stat-card { background: var(--card-bg-color); border: 2px solid var(--card-border-color); border-radius: 16px; padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .stat-number, .diary-stat-number { font-size: 32px; font-weight: 800; color: var(--primary-accent); margin-bottom: 8px; line-height: 1; }
+        .stat-card, .diary-stat-card { background: var(--card-bg-color);
+            border: 2px solid var(--card-border-color); border-radius: 16px; padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .stat-number, .diary-stat-number { font-size: 32px; font-weight: 800; color: var(--primary-accent); margin-bottom: 8px;
+            line-height: 1; }
         .stat-label, .diary-stat-label { color: var(--secondary-text-color); font-weight: 600; font-size: 12px; }
 
         .fab {
             position: fixed;
             bottom: 100px;
             right: calc(50% - 200px + 20px);
-            width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); border: none; color: white; font-size: 24px; cursor: pointer;
+            width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white; font-size: 24px; cursor: pointer;
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); transition: all 0.3s ease; z-index: 999;
         }
         @media (max-width: 420px) {
@@ -207,92 +216,209 @@
         }
         .fab:active { transform: scale(0.9); }
 
-        .btn-mobile { padding: 16px 24px; border: none; border-radius: 16px; font-weight: 600; cursor: pointer; font-size: 16px; transition: all 0.3s ease; position: relative; overflow: hidden; }
-        .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); }
-        .btn-secondary { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3); }
-        .btn-success { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3); }
+        .btn-mobile { padding: 16px 24px; border: none; border-radius: 16px; font-weight: 600;
+            cursor: pointer; font-size: 16px; transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+        .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); }
+        .btn-secondary { background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+        }
+        .btn-success { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white;
+            box-shadow: 0 4-15px rgba(79, 172, 254, 0.3); }
         .btn-mobile:active { transform: scale(0.98); }
         .control-buttons { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
         .control-buttons.row { flex-direction: row; justify-content: center; gap: 16px; }
 
-        .mood-input { display: flex; justify-content: space-around; margin-top: 20px; }
-        .mood-emoji { width: 60px; height: 60px; font-size: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; cursor: pointer; transition: all 0.3s ease; background: #f8f9fa; }
-        .mood-emoji:active { transform: scale(0.9); }
-        .mood-emoji.selected { background: linear-gradient(135deg, #667eea, #764ba2); transform: scale(1.1); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+        .mood-input { 
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px; 
+            margin-top: 20px;
+        }
+        .mood-emoji { 
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            font-size: 32px;
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+            border-radius: 16px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            background: var(--subtle-bg-color);
+            border: 2px solid var(--card-border-color);
+            padding: 12px;
+        }
+        .mood-emoji .emoji-label {
+            font-size: 12px;
+            margin-top: 8px;
+            color: var(--secondary-text-color);
+            font-weight: 600;
+            text-align: center;
+        }
 
-        .breathing-circle { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); margin: 20px auto; animation: breathe 4s infinite; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; font-weight: 600; }
+        .mood-emoji:active { transform: scale(0.9); }
+        .mood-emoji.selected { background: linear-gradient(135deg, #667eea, #764ba2); transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+
+        .breathing-circle { width: 80px; height: 80px; border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2); margin: 20px auto; animation: breathe 4s infinite;
+            display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; font-weight: 600;
+        }
         @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
         
-        .game-area { width: 100%; height: 250px; background: var(--subtle-bg-color); border-radius: 12px; margin-top: 16px; position: relative; overflow: hidden; }
-        .bubble { position: absolute; bottom: -20px; background: rgba(102, 126, 234, 0.5); border-radius: 50%; animation: float 5s infinite; cursor: pointer; }
+        .game-area { width: 100%; height: 250px; background: var(--subtle-bg-color); border-radius: 12px;
+            margin-top: 16px; position: relative; overflow: hidden;
+        }
+        .bubble { position: absolute; bottom: -20px; background: rgba(102, 126, 234, 0.5);
+            border-radius: 50%; animation: float 5s infinite; cursor: pointer; }
         @keyframes float { 0% { transform: translateY(0); } 100% { transform: translateY(-300px); } }
 
-        .memory-game-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; height: 300px; padding: 12px; box-sizing: border-box; }
-        .memory-card { background: var(--subtle-bg-color); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; transition: transform 0.6s; transform-style: preserve-3d; position: relative; }
+        .memory-game-grid { display: grid;
+            grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; height: 300px;
+            padding: 12px; box-sizing: border-box;
+        }
+        .memory-card { background: var(--subtle-bg-color); border-radius: 8px; display: flex;
+            align-items: center; justify-content: center; font-size: 28px; cursor: pointer;
+            transition: transform 0.6s; transform-style: preserve-3d; position: relative;
+        }
         .memory-card.flip { transform: rotateY(180deg); }
         .memory-card .front-face, .memory-card .back-face { position: absolute; backface-visibility: hidden; }
         .memory-card .front-face { transform: rotateY(180deg); }
         .memory-card.match .front-face { color: var(--positive-color); }
-        .game-score { display: flex; justify-content: space-around; font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+        .game-score { display: flex; justify-content: space-around; font-size: 14px;
+            font-weight: 600; margin-bottom: 16px; }
 
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: flex-end; z-index: 2000; }
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: flex-end; z-index: 2000;
+        }
         .modal.show { display: flex; }
-        .modal-content { background: var(--card-bg-color); border-radius: 20px 20px 0 0; padding: 24px; width: 100%; max-height: 80vh; overflow-y: auto; transform: translateY(100%); transition: transform 0.3s ease; }
+        .modal-content { background: var(--card-bg-color); border-radius: 20px 20px 0 0; padding: 24px;
+            width: 100%; max-height: 80vh; overflow-y: auto; transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
         .modal.show .modal-content { transform: translateY(0); }
         .modal-header { display: flex; align-items: center; margin-bottom: 20px; gap: 16px; }
-        .modal-emoji { width: 60px; height: 60px; font-size: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, #f8f9ff, #e8f4f8); }
-        .close-btn { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer; color: #999; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .modal-emoji { width: 60px; height: 60px; font-size: 30px; display: flex; align-items: center;
+            justify-content: center; border-radius: 50%; background: linear-gradient(135deg, #f8f9ff, #e8f4f8);
+        }
+        .close-btn { position: absolute; top: 16px; right: 20px; background: none;
+            border: none; font-size: 24px;
+            cursor: pointer; color: #999; width: 32px; height: 32px; display: flex;
+            align-items: center; justify-content: center; border-radius: 50%;
+        }
         .advice-section { margin-bottom: 20px; }
         .advice-section h4 { color: var(--primary-accent); margin-bottom: 12px; font-size: 18px; }
         .advice-list { list-style: none; }
-        .advice-list li { background: var(--subtle-bg-color); padding: 12px 16px; margin-bottom: 8px; border-radius: 12px; border-left: 4px solid var(--primary-accent); line-height: 1.5; }
+        .advice-list li { background: var(--subtle-bg-color); padding: 12px 16px; margin-bottom: 8px;
+            border-radius: 12px; border-left: 4px solid var(--primary-accent); line-height: 1.5;
+        }
 
-        .diary-entry { background: var(--subtle-bg-color); border-radius: 16px; padding: 20px; margin-bottom: 16px; border-left: 4px solid var(--primary-accent); position: relative; }
-        .diary-entry-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .diary-entry { background: var(--subtle-bg-color); border-radius: 16px;
+            padding: 20px; margin-bottom: 16px; border-left: 4px solid var(--primary-accent); position: relative;
+        }
+        .diary-entry-header { display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 12px;
+        }
         .diary-date { font-size: 14px; color: var(--primary-accent); font-weight: 600; }
         .diary-mood { font-size: 24px; }
         .diary-content { color: var(--text-color); line-height: 1.6; margin-bottom: 12px; }
-        .diary-form { background: var(--card-bg-color); border-radius: 20px; padding: 24px; margin: 20px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.1); display: none; }
+        .diary-form { background: var(--card-bg-color); border-radius: 20px;
+            padding: 24px; margin: 20px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: none;
+        }
         .diary-form.show { display: block; }
         .form-group { margin-bottom: 20px; }
-        .form-label { display: block; color: var(--text-color); font-weight: 600; margin-bottom: 8px; font-size: 16px; }
-        .form-input, .form-textarea { width: 100%; padding: 16px; border: 2px solid var(--card-border-color); border-radius: 16px; font-family: inherit; font-size: 16px; line-height: 1.5; outline: none; transition: all 0.3s ease; background: var(--subtle-bg-color); color: var(--text-color); }
+        .form-label { display: block; color: var(--text-color); font-weight: 600; margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .form-input, .form-textarea { width: 100%; padding: 16px; border: 2px solid var(--card-border-color);
+            border-radius: 16px; font-family: inherit; font-size: 16px; line-height: 1.5;
+            outline: none; transition: all 0.3s ease; background: var(--subtle-bg-color);
+            color: var(--text-color);
+        }
         .form-textarea { min-height: 120px; resize: vertical; }
-        .form-input:focus, .form-textarea:focus { border-color: var(--primary-accent); background: var(--bg-color); box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
-        .mood-selector { display: flex; justify-content: space-around; background: var(--subtle-bg-color); border-radius: 16px; padding: 16px; margin: 12px 0; }
-        .mood-option { display: flex; flex-direction: column; align-items: center; cursor: pointer; padding: 8px; border-radius: 12px; transition: all 0.3s ease; }
-        .mood-option.selected { background: var(--bg-color); box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2); }
-        .mood-option .mood-icon { font-size: 32px; margin-bottom: 4px; }
+        .form-input:focus, .form-textarea:focus { border-color: var(--primary-accent); background: var(--bg-color);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+        .mood-selector { display: flex;
+            justify-content: space-around; background: var(--subtle-bg-color); border-radius: 16px;
+            padding: 16px; margin: 12px 0;
+        }
+        .mood-option { display: flex; flex-direction: column; align-items: center;
+            cursor: pointer; padding: 8px; border-radius: 12px; transition: all 0.3s ease;
+        }
+        .mood-option.selected { background: var(--bg-color);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2); }
+        .mood-option .mood-icon { font-size: 32px;
+            margin-bottom: 4px; }
         .mood-option .mood-label { font-size: 12px; font-weight: 600; color: var(--secondary-text-color); }
 
-        .neuro-item { background: var(--subtle-bg-color); padding: 16px; margin-bottom: 12px; border-radius: 12px; border-left: 4px solid var(--primary-accent); cursor: pointer; transition: all 0.3s ease; }
+        .neuro-item { background: var(--subtle-bg-color); padding: 16px; margin-bottom: 12px;
+            border-radius: 12px; border-left: 4px solid var(--primary-accent); cursor: pointer;
+            transition: all 0.3s ease;
+        }
         .neuro-item:hover { transform: translateX(5px); }
         .neuro-item strong { color: var(--primary-accent); display: block; margin-bottom: 8px; }
-        .neuro-explanation { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--card-border-color); line-height: 1.6; }
+        .neuro-explanation { display: none; margin-top: 12px; padding-top: 12px;
+            border-top: 1px solid var(--card-border-color); line-height: 1.6;
+        }
         .neuro-explanation.show { display: block; animation: slideDown 0.5s ease; }
         @keyframes slideDown { from { opacity: 0; max-height: 0; } to { opacity: 1; max-height: 500px; } }
 
-        .preference-item { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--card-border-color); }
+        .preference-item { display: flex;
+            justify-content: space-between; align-items: center; padding: 16px 0;
+            border-bottom: 1px solid var(--card-border-color);
+        }
         .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
         .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 28px; }
-        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0;
+            bottom: 0; background-color: #ccc; transition: .4s; border-radius: 28px; }
+        .slider:before { position: absolute; content: ""; height: 20px;
+            width: 20px; left: 4px; bottom: 4px;
+            background-color: white; transition: .4s; border-radius: 50%;
+        }
         input:checked + .slider { background-color: var(--primary-accent); }
         input:checked + .slider:before { transform: translateX(22px); }
         
-        .profile-picture-container { display: flex; justify-content: center; align-items: center; margin-bottom: 24px; }
+        .profile-picture-container { display: flex;
+            justify-content: center; align-items: center; margin-bottom: 24px;
+        }
         .profile-emoji {
-            width: 100px; height: 100px; background: var(--subtle-bg-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; border: 4px solid var(--primary-accent); box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: var(--text-color);
+            width: 100px;
+            height: 100px; background: var(--subtle-bg-color); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 50px;
+            border: 4px solid var(--primary-accent);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: var(--text-color);
         }
 
-        .emoji-selector-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; background: var(--subtle-bg-color); padding: 16px; border-radius: 16px; }
-        .emoji-choice { font-size: 28px; padding: 8px; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease-in-out; border: 2px solid transparent; }
+        .emoji-selector-grid { display: flex;
+            flex-wrap: wrap; gap: 12px; justify-content: center;
+            background: var(--subtle-bg-color); padding: 16px; border-radius: 16px;
+        }
+        .emoji-choice { font-size: 28px; padding: 8px; border-radius: 50%;
+            width: 48px; height: 48px;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            transition: all 0.2s ease-in-out; border: 2px solid transparent;
+        }
         .emoji-choice:hover { background: rgba(102, 126, 234, 0.1); }
-        .emoji-choice.selected { border-color: var(--primary-accent); transform: scale(1.15); background: var(--bg-color); }
+        .emoji-choice.selected { border-color: var(--primary-accent); transform: scale(1.15);
+            background: var(--bg-color);
+        }
 
         .toast {
-            position: fixed; top: 60px; left: 50%; transform: translateX(-50%) translateY(-100px); width: calc(100% - 40px); max-width: 360px; background: var(--card-bg-color); border: 1px solid var(--card-border-color); color: var(--text-color); border-radius: 12px; padding: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); opacity: 0; transition: all 0.3s ease; z-index: 1500; border-left-width: 4px;
+            position: fixed;
+            top: 60px; left: 50%; transform: translateX(-50%) translateY(-100px);
+            width: calc(100% - 40px); max-width: 360px; background: var(--card-bg-color);
+            border: 1px solid var(--card-border-color);
+            color: var(--text-color); border-radius: 12px; padding: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2); opacity: 0; transition: all 0.3s ease;
+            z-index: 1500;
+            border-left-width: 4px;
         }
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
         .toast.success { border-left-color: #4facfe; }
@@ -300,23 +426,40 @@
         
         /* === NUEVOS ESTILOS PARA PANTALLA DE BIENVENIDA Y EJERCICIOS === */
         .welcome-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); z-index: 3000;
-            display: none; /* Se muestra con JS */
-            justify-content: center; align-items: center;
+            display: none;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
         }
         .welcome-overlay.show { display: flex; }
         .welcome-content {
-            background: var(--card-bg-color); color: var(--text-color);
+            background: var(--card-bg-color);
+            color: var(--text-color);
             padding: 32px; border-radius: 20px;
             max-width: 380px; text-align: center;
         }
 
-        .breathing-guide-modal { text-align: center; }
-        #breathingInstruction { font-size: 20px; font-weight: 600; margin: 20px 0; color: var(--primary-accent); }
-        .progress-bar-container { width: 100%; height: 10px; background: var(--subtle-bg-color); border-radius: 5px; overflow: hidden; }
-        #breathingProgressBar { width: 0%; height: 100%; background: var(--primary-accent); transition: width 0.1s linear; }
+        .breathing-guide-container { text-align: center; display: none; }
+        .breathing-guide-container.show { display: block; }
+        #breathingInstruction { font-size: 20px; font-weight: 600; margin: 20px 0;
+            color: var(--primary-accent);
+        }
+        .progress-bar-container { width: 100%; height: 10px; background: var(--subtle-bg-color);
+            border-radius: 5px; overflow: hidden;
+        }
+        #breathingProgressBar { width: 0%;
+            height: 100%; background: var(--primary-accent); transition: width 0.1s linear;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+        }
 
     </style>
 </head>
@@ -363,13 +506,7 @@
 
             <div class="card mood-section">
                 <h3>¿Cómo te sientes ahora?</h3>
-                <div class="mood-input">
-                    <div class="mood-emoji" onclick="selectMood(this, 'Muy Feliz')">😄</div>
-                    <div class="mood-emoji" onclick="selectMood(this, 'Feliz')">😊</div>
-                    <div class="mood-emoji" onclick="selectMood(this, 'Neutral')">😐</div>
-                    <div class="mood-emoji" onclick="selectMood(this, 'Triste')">😢</div>
-                    <div class="mood-emoji" onclick="selectMood(this, 'Enojado')">😠</div>
-                </div>
+                <div class="mood-input" id="homeMoodInput"></div>
             </div>
 
             <div class="card mood-section">
@@ -395,7 +532,7 @@
             </div>
             <div class="emotions-grid" id="emotionsGrid"></div>
         </div>
-        
+
         <div class="content-section" id="history">
             <div class="section-header">
                 <div class="section-title">Mi Historial</div>
@@ -404,55 +541,72 @@
             <div class="card">
                 <h3>Distribución de Estados de Ánimo</h3>
                 <p>Basado en tus entradas del diario.</p>
-                <canvas id="moodDistributionChart" height="250"></canvas>
+                <div class="chart-container">
+                    <canvas id="moodDistributionChart"></canvas>
+                </div>
             </div>
             <div class="card">
                 <h3>Actividad del Diario</h3>
                 <p>Entradas registradas en la última semana.</p>
-                <canvas id="diaryActivityChart" height="250"></canvas>
+                <div class="chart-container">
+                    <canvas id="diaryActivityChart"></canvas>
+                </div>
             </div>
         </div>
-
+        
         <div class="content-section" id="game">
             <div class="section-header">
                 <div class="section-title">Relájate y Juega</div>
                 <div class="section-subtitle">Juegos para calmar la mente y liberar la tensión</div>
             </div>
-            
-             <div class="card">
-                <h3>🧘‍♀️ Respiración Guiada</h3>
-                <p>Elige una técnica para centrarte y encontrar la calma.</p>
-                <div class="control-buttons">
-                    <button class="btn-mobile btn-primary" onclick="startBreathingExercise('4-7-8')">Respiración 4-7-8</button>
-                    <button class="btn-mobile btn-success" onclick="startBreathingExercise('cuadrada')">Respiración Cuadrada</button>
-                </div>
-            </div>
-            
-            <div class="card game-container">
-                <h3>🫧 Burst de Tranquilidad</h3>
-                <p>Revienta las burbujas de estrés tocándolas para liberar tensión.</p>
-                <div class="game-score">
-                    <div>🎯 Burbujas: <span id="bubblesPopped">0</span></div>
-                    <div>⏱️ Tiempo: <span id="gameTime">60</span>s</div>
-                </div>
-                <div class="game-area" id="gameArea"></div>
-                <div class="control-buttons">
-                    <button id="startGameBtn" class="btn-mobile btn-primary" onclick="startGame()">🎮 Iniciar</button>
-                    <button class="btn-mobile btn-secondary" onclick="resetGame()">🔄 Reiniciar</button>
-                </div>
-            </div>
 
-            <div class="card memory-game-container">
-                <h3>🧠 Memoria Emocional</h3>
-                <p>Encuentra las parejas de emociones para entrenar tu concentración.</p>
-                <div class="game-score">
-                    <div>🎯 Intentos: <span id="memoryTries">0</span></div>
-                    <div>💖 Parejas: <span id="memoryMatches">0</span>/<span id="totalPairs">6</span></div>
+            <div id="gameContent">
+                <div class="card">
+                    <h3>🧘‍♀️ Respiración Guiada</h3>
+                    <p>Elige una técnica para centrarte y encontrar la calma.</p>
+                    <div class="control-buttons">
+                        <button class="btn-mobile btn-primary" onclick="startBreathingExercise('4-7-8')">Respiración 4-7-8</button>
+                        <button class="btn-mobile btn-success" onclick="startBreathingExercise('cuadrada')">Respiración Cuadrada</button>
+                    </div>
                 </div>
-                <div class="memory-game-grid" id="memoryGameArea"></div>
-                <div class="control-buttons">
-                    <button class="btn-mobile btn-primary" onclick="setupMemoryGame()">🎮 Iniciar</button>
-                    <button class="btn-mobile btn-secondary" onclick="resetMemoryGame()">🔄 Reiniciar</button>
+                
+                <div class="card game-container">
+                    <h3>🫧 Burst de Tranquilidad</h3>
+                    <p>Revienta las burbujas de estrés tocándolas para liberar tensión.</p>
+                    <div class="game-score">
+                        <div>🎯 Burbujas: <span id="bubblesPopped">0</span></div>
+                        <div>⏱️ Tiempo: <span id="gameTime">60</span>s</div>
+                    </div>
+                    <div class="game-area" id="gameArea"></div>
+                    <div class="control-buttons">
+                        <button id="startGameBtn" class="btn-mobile btn-primary" onclick="startGame()">🎮 Iniciar</button>
+                        <button class="btn-mobile btn-secondary" onclick="resetGame()">🔄 Reiniciar</button>
+                    </div>
+                </div>
+                <div class="card memory-game-container">
+                    <h3>🧠 Memoria Emocional</h3>
+                    <p>Encuentra las parejas de emociones para entrenar tu concentración.</p>
+                    <div class="game-score">
+                        <div>🎯 Intentos: <span id="memoryTries">0</span></div>
+                        <div>💖 Parejas: <span id="memoryMatches">0</span>/<span id="totalPairs">6</span></div>
+                    </div>
+                    <div class="memory-game-grid" id="memoryGameArea"></div>
+                    <div class="control-buttons">
+                        <button class="btn-mobile btn-primary" onclick="setupMemoryGame()">🎮 Iniciar</button>
+                        <button class="btn-mobile btn-secondary" onclick="resetMemoryGame()">🔄 Reiniciar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="breathing-guide-container" id="breathingExerciseContainer">
+                <div class="welcome-content">
+                    <h2 class="section-title">Ejercicio de Respiración</h2>
+                    <div class="breathing-circle" id="breathingExerciseCircle"></div>
+                    <div id="breathingInstruction"></div>
+                    <div class="progress-bar-container">
+                        <div id="breathingProgressBar"></div>
+                    </div>
+                    <button class="btn-mobile btn-secondary" style="width:100%; margin-top: 20px;" onclick="stopBreathingExercise()">Parar</button>
                 </div>
             </div>
         </div>
@@ -462,7 +616,7 @@
                 <div class="section-title">Mi Diario</div>
                 <div class="section-subtitle">Expresa y procesa tus emociones</div>
             </div>
-            <div class="diary-stats">
+            <div class="card diary-stats">
                 <div class="diary-stat-card"><div class="diary-stat-number" id="totalEntries">0</div><div class="diary-stat-label">Entradas</div></div>
                 <div class="diary-stat-card"><div class="diary-stat-number" id="writingStreak">0</div><div class="diary-stat-label">Días Escribiendo</div></div>
             </div>
@@ -471,7 +625,28 @@
                 <div id="promptText" style="margin-bottom: 16px;">¿Qué pensamiento positivo puedes llevar contigo hoy?</div>
                 <button class="btn-mobile btn-primary" onclick="getNewPrompt()">Nueva Idea</button>
             </div>
-            <div class="diary-form" id="diaryForm"></div>
+
+            <button class="btn-mobile btn-primary" style="width: 100%; margin: 20px 0;" onclick="toggleDiaryForm()">✍️ Escribir Nueva Entrada</button>
+
+            <div class="diary-form" id="diaryForm">
+                <form id="diaryEntryForm">
+                    <div class="form-group">
+                        <label class="form-label">¿Qué emoción sientes?</label>
+                        <div class="mood-selector" id="diaryMoodSelector">
+                            </div>
+                        <input type="hidden" id="selectedDiaryMood" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="diaryEntryText" class="form-label">Escribe tu entrada:</label>
+                        <textarea id="diaryEntryText" class="form-textarea" placeholder="¿Qué pasó hoy? ¿Cómo te sientes al respecto?" required></textarea>
+                    </div>
+                    <div class="control-buttons">
+                        <button type="submit" class="btn-mobile btn-primary" style="width:100%;">Guardar Entrada</button>
+                        <button type="button" class="btn-mobile btn-secondary" style="width:100%;" onclick="toggleDiaryForm()">Cerrar</button>
+                    </div>
+                </form>
+            </div>
+            
             <div id="diaryEntries"></div>
         </div>
 
@@ -501,7 +676,7 @@
                         <strong>Oxitocina</strong>
                         <div class="neuro-explanation"><strong>Funciones:</strong> Fortalece vínculos afectivos, promueve la empatía y confianza, y reduce el estrés.<br><br><strong>Cómo aumentarla:</strong> Contacto físico (abrazos), pasar tiempo con seres queridos, actos de bondad.</div>
                     </div>
-                     <div class="neuro-item" onclick="toggleNeuroExplanation(this)">
+                    <div class="neuro-item" onclick="toggleNeuroExplanation(this)">
                         <strong>Cortisol</strong>
                         <div class="neuro-explanation"><strong>Funciones:</strong> Es la "hormona del estrés". Prepara al cuerpo para la acción, pero en exceso es dañina.<br><br><strong>Cómo manejarlo:</strong> Sueño adecuado, técnicas de relajación, ejercicio y una dieta balanceada.</div>
                     </div>
@@ -514,716 +689,912 @@
                 <div class="section-title">Mi Perfil</div>
                 <div class="section-subtitle">Configura tu experiencia</div>
             </div>
-
             <div class="card">
                 <div class="profile-picture-container">
                     <div id="profileEmojiDisplay" class="profile-emoji">👤</div>
                 </div>
-
                 <form id="profileForm" onsubmit="saveProfile(event)">
                     <div class="form-group">
-                        <label class="form-label">Elige tu Emoji</label>
-                        <div id="emojiSelector" class="emoji-selector-grid"></div>
-                        <input type="hidden" id="selectedEmojiInput" value="👤">
+                        <label for="profileUsernameInput" class="form-label">Tu Nombre</label>
+                        <input type="text" id="profileUsernameInput" class="form-input" placeholder="Nombre" required>
                     </div>
                     <div class="form-group">
-                        <label for="usernameInput" class="form-label">Nombre de Usuario</label>
-                        <input type="text" id="usernameInput" class="form-input" placeholder="¿Cómo te gustaría que te llamemos?">
+                        <label class="form-label">Tu Emoji</label>
+                        <div id="emojiSelector" class="emoji-selector-grid"></div>
+                        <input type="hidden" id="selectedEmojiInput">
                     </div>
-                    <button type="submit" class="btn-mobile btn-primary" style="width:100%;">Guardar Perfil</button>
+                    <div class="preference-item">
+                        <label for="darkModeToggle">Modo Oscuro</label>
+                        <label class="switch">
+                            <input type="checkbox" id="darkModeToggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-mobile btn-primary" style="width:100%;">Guardar Cambios</button>
                 </form>
             </div>
-
-             <div class="card">
-                <h3>Acerca de EmotionSpace</h3>
-                <p style="text-align: justify; line-height: 1.6;"><strong>EmotionSpace</strong> es tu compañero digital para el bienestar emocional. Nuestra misión es ofrecerte un espacio seguro y privado para explorar, entender y gestionar tus emociones a través de herramientas interactivas, un diario personal y contenido educativo basado en la ciencia.</p>
-            </div>
-
-            <div class="card">
-                <h3>Preferencias</h3>
-                <div class="preference-item">
-                    <label for="darkModeToggle">Modo Oscuro</label>
-                    <label class="switch">
-                        <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode(this.checked)">
-                        <span class="slider"></span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>Datos de la App</h3>
-                <div class="control-buttons">
-                    <button class="btn-mobile btn-success" onclick="exportData()">📦 Exportar Mis Datos</button>
-                    <button class="btn-mobile btn-secondary" onclick="deleteAllData()">🗑️ Borrar Todos Mis Datos</button>
-                </div>
-            </div>
         </div>
-        
+
         <div class="tab-navigation">
-            <div class="tab-item active" onclick="showSection('home', this)"><div class="icon">🏠</div><div class="label">Inicio</div></div>
-            <div class="tab-item" onclick="showSection('emotions', this)"><div class="icon">💖</div><div class="label">Emociones</div></div>
-            <div class="tab-item" onclick="showSection('history', this)"><div class="icon">📊</div><div class="label">Historial</div></div>
-            <div class="tab-item" onclick="showSection('game', this)"><div class="icon">🎮</div><div class="label">Juego</div></div>
-            <div class="tab-item" onclick="showSection('diary', this)"><div class="icon">📔</div><div class="label">Diario</div></div>
-            <div class="tab-item" onclick="showSection('learn', this)"><div class="icon">🧠</div><div class="label">Aprende</div></div>
-            <div class="tab-item" onclick="showSection('profile', this)"><div class="icon">👤</div><div class="label">Perfil</div></div>
+            <div class="tab-item active" onclick="showSection('home', this)">
+                <div class="icon">🏠</div>
+                <div class="label">Inicio</div>
+            </div>
+            <div class="tab-item" onclick="showSection('emotions', this)">
+                <div class="icon">💖</div>
+                <div class="label">Emociones</div>
+            </div>
+            <div class="tab-item" onclick="showSection('history', this)">
+                <div class="icon">📈</div>
+                <div class="label">Historial</div>
+            </div>
+            <div class="tab-item" onclick="showSection('game', this)">
+                <div class="icon">🎮</div>
+                <div class="label">Juegos</div>
+            </div>
+            <div class="tab-item" onclick="showSection('diary', this)">
+                <div class="icon">📓</div>
+                <div class="label">Diario</div>
+            </div>
+            <div class="tab-item" onclick="showSection('learn', this)">
+                <div class="icon">🧠</div>
+                <div class="label">Aprende</div>
+            </div>
+            <div class="tab-item" onclick="showSection('profile', this)">
+                <div class="icon">👤</div>
+                <div class="label">Perfil</div>
+            </div>
         </div>
     </div>
 
-    <button class="fab" onclick="toggleDiaryForm()">✍️</button>
-
-    <div class="modal" id="emotionModal" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
+    <div class="modal" id="adviceModal">
+        <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">×</button>
             <div class="modal-header">
                 <div id="modalEmoji" class="modal-emoji"></div>
                 <div>
-                    <h3 id="modalTitle" class="section-title" style="font-size: 24px; margin: 0; text-align: left;"></h3>
-                    <p id="modalDescription" class="section-subtitle" style="text-align: left; margin: 0;"></p>
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalSubtitle" style="color: var(--secondary-text-color);"></p>
                 </div>
             </div>
-            <div class="advice-section" id="consejosSection">
-                <h4>✨ Consejos para Gestionar</h4>
+            <div class="advice-section" id="adviceListContainer">
+                <h4>Recomendaciones</h4>
                 <ul id="adviceList" class="advice-list"></ul>
             </div>
-             <div class="advice-section" id="actividadesSection">
-                <h4>🏃 Actividades Sugeridas</h4>
-                <ul id="activityList" class="advice-list"></ul>
-            </div>
-             <div class="advice-section breathing-guide-modal" id="breathingGuide" style="display: none;">
-                <h3 id="breathingTitle"></h3>
-                <div id="breathingInstruction">Prepárate...</div>
-                <div class="progress-bar-container"><div id="breathingProgressBar"></div></div>
-            </div>
+            <div id="additionalInfo"></div>
         </div>
     </div>
-    
-    <div class="toast" id="toast"></div>
+    <div id="toast" class="toast"></div>
 
     <script>
-        // ===================================
-        // GLOBAL STATE & CONSTANTS
-        // ===================================
         const emotionsData = {
-            alegria: { name: 'Alegría', icon: '😄', color: '#fdd835', description: 'Sentimiento de placer y satisfacción.',
-                advice: ['Comparte tu alegría con alguien.', 'Agradece por tres cosas que te sucedieron hoy.', 'Sonríe, incluso si no tienes ganas.'],
-                activities: ['Escucha tu música favorita.', 'Sal a caminar al aire libre.', 'Llama a un amigo o familiar.']
+            'Alegría': {
+                emoji: '😄',
+                subtitle: 'Una emoción de bienestar y felicidad.',
+                advice: [
+                    'Comparte tu alegría con otros. La felicidad se multiplica cuando se comparte.',
+                    'Guarda un recuerdo de este momento. Escríbelo en tu diario para revivirlo más tarde.',
+                    'Disfruta plenamente el momento presente. Tómate un respiro y aprecia lo que te hace feliz.'
+                ],
+                activities: [
+                    'Actividad: Escucha tu canción favorita y baila.',
+                    'Actividad: Llama a un ser querido y cuéntale tu día.',
+                    'Actividad: Sal a caminar y observa las pequeñas cosas bonitas a tu alrededor.'
+                ]
             },
-            tristeza: { name: 'Tristeza', icon: '😢', color: '#64b5f6', description: 'Sensación de desdicha o infelicidad.',
-                advice: ['Permítete sentir la tristeza sin juzgarte.', 'Escribe sobre lo que sientes.', 'Habla con alguien de confianza.'],
-                activities: ['Mira una película reconfortante.', 'Toma un baño caliente.', 'Dibuja o pinta para expresar tus sentimientos.']
+            'Tristeza': {
+                emoji: '😢',
+                subtitle: 'Una emoción que nos permite procesar las pérdidas.',
+                advice: [
+                    'Permítete sentir la tristeza sin juzgarte. Es válido no estar bien todo el tiempo.',
+                    'No te aísles. Habla con alguien de confianza sobre cómo te sientes.',
+                    'Utiliza este momento para reflexionar sobre lo que valoras. La tristeza a menudo nos muestra lo que más nos importa.'
+                ],
+                activities: [
+                    'Actividad: Ve una película que te haga sentir mejor.',
+                    'Actividad: Abraza una almohada o a tu mascota. El contacto físico ayuda a liberar la oxitocina.',
+                    'Actividad: Escribe en tu diario lo que te está causando dolor.'
+                ]
             },
-            ira: { name: 'Ira', icon: '😠', color: '#e57373', description: 'Emoción de enfado o irritación intensos.',
-                advice: ['Respira profundo contando hasta 10.', 'Identifica la causa real de tu enojo.', 'Busca una solución en lugar de culpar.'],
-                activities: ['Haz ejercicio físico intenso (correr, saltar).', 'Golpea una almohada.', 'Escucha música fuerte y enérgica.']
+            'Enojo': {
+                emoji: '😡',
+                subtitle: 'Una emoción que señala que un límite ha sido cruzado.',
+                advice: [
+                    'Antes de reaccionar, respira profundo. Cuenta hasta diez para calmarte.',
+                    'Expresa tu enojo de forma constructiva. Usa frases como "Me siento frustrado cuando..."',
+                    'Identifica la causa de tu enojo. A menudo, esconde otras emociones como frustración o impotencia.'
+                ],
+                activities: [
+                    'Actividad: Haz ejercicio o estiramientos para liberar la tensión física.',
+                    'Actividad: Golpea una almohada o grita en un espacio seguro para desahogarte.',
+                    'Actividad: Escribe una carta a la persona o situación que te enojó, pero no la envíes.'
+                ]
             },
-            miedo: { name: 'Miedo', icon: '😨', color: '#ba68c8', description: 'Sensación de angustia por un peligro real o imaginario.',
-                advice: ['Acepta que sentir miedo es normal.', 'Analiza si el miedo es racional.', 'Enfrenta tus miedos en pequeños pasos.'],
-                activities: ['Practica la meditación guiada para el miedo.', 'Haz una lista de tus fortalezas.', 'Planifica cómo manejar la situación que te da miedo.']
+            'Miedo': {
+                emoji: '😨',
+                subtitle: 'Una emoción que nos protege de un peligro percibido.',
+                advice: [
+                    'Analiza qué te causa miedo. A veces, nombrarlo le quita poder.',
+                    'Recuerda tus fortalezas. Has superado desafíos antes, puedes con este también.',
+                    'Enfócate en lo que puedes controlar. Acepta lo que no puedes y prepárate para lo que sí.'
+                ],
+                activities: [
+                    'Actividad: Practica un ejercicio de respiración para calmar el sistema nervioso.',
+                    'Actividad: Visualiza un lugar seguro y tranquilo en tu mente.',
+                    'Actividad: Aprende algo nuevo o investiga más sobre lo que te asusta.'
+                ]
             },
-            sorpresa: { name: 'Sorpresa', icon: '😮', color: '#ffb74d', description: 'Asombro o extrañeza por algo inesperado.',
-                advice: ['Disfruta el momento y la novedad.', 'Reflexiona sobre lo que te sorprendió.', 'Comparte tu experiencia con otros.'],
-                activities: ['Prueba algo nuevo que nunca hayas hecho.', 'Visita un lugar desconocido en tu ciudad.', 'Lee sobre un tema completamente nuevo para ti.']
+            'Sorpresa': {
+                emoji: '😮',
+                subtitle: 'Una emoción de reacción a lo inesperado.',
+                advice: [
+                    'Tómate un momento para asimilar la situación.',
+                    'Pregúntate si la sorpresa es positiva o negativa. A menudo, el miedo y la alegría se confunden en la sorpresa.',
+                    'Acepta el cambio. La sorpresa es una oportunidad para adaptarte a lo nuevo.'
+                ],
+                activities: [
+                    'Actividad: Registra el momento en tu diario para no olvidarlo.',
+                    'Actividad: Siéntate y respira para estabilizarte.',
+                    'Actividad: Comparte la sorpresa con alguien y ve cómo reaccionan.'
+                ]
             },
-            calma: { name: 'Calma', icon: '😌', color: '#81c784', description: 'Estado de tranquilidad y serenidad.',
-                advice: ['Identifica qué te ayuda a mantener la calma.', 'Practica la atención plena (mindfulness).', 'Crea un ambiente tranquilo a tu alrededor.'],
-                activities: ['Medita durante 5-10 minutos.', 'Lee un libro en un lugar cómodo.', 'Disfruta de una taza de té o infusión.']
-            },
-             ansiedad: { name: 'Ansiedad', icon: '😥', color: '#ff8a65', description: 'Preocupación y miedo intensos y excesivos.',
-                advice: ['Concéntrate en tu respiración.', 'Usa la técnica 5-4-3-2-1 para conectar con el presente.', 'Cuestiona tus pensamientos ansiosos.'],
-                activities: ['Realiza estiramientos suaves.', 'Organiza o limpia un pequeño espacio.', 'Escucha sonidos de la naturaleza.']
-            },
-            gratitud: { name: 'Gratitud', icon: '🥰', color: '#4dd0e1', description: 'Sentimiento de aprecio y agradecimiento.',
-                advice: ['Lleva un diario de gratitud.', 'Expresa tu agradecimiento a las personas.', 'Enfócate en lo que tienes, no en lo que te falta.'],
-                activities: ['Escribe una carta de agradecimiento (aunque no la envíes).', 'Haz un favor a alguien sin esperar nada a cambio.', 'Crea un frasco de la gratitud con notas diarias.']
+            'Calma': {
+                emoji: '😌',
+                subtitle: 'Un estado de paz mental y emocional.',
+                advice: [
+                    'Aprecia este momento de calma. Es un regalo en un mundo ocupado.',
+                    'Busca la fuente de esta calma. ¿Qué actividades, personas o lugares te la proporcionan?',
+                    'Escribe sobre tu estado. Analizar cómo llegaste aquí te ayudará a encontrar el camino de vuelta cuando lo necesites.'
+                ],
+                activities: [
+                    'Actividad: Medita por unos minutos o haz un ejercicio de mindfulness.',
+                    'Actividad: Escucha música relajante o sonidos de la naturaleza.',
+                    'Actividad: Sal a un entorno natural y disfruta del aire fresco.'
+                ]
             }
         };
-        const EMOJI_PROFILE_OPTIONS = ['😀', '😎', '😇', '🥰', '🤔', '😴', '🥳', '🤯', '💖', '🚀', '🌟', '👤'];
-        let emotionLevels = {};
-        let currentPromptIndex = 0;
-        const writingPrompts = [
+
+        const homeMoodInput = document.getElementById('homeMoodInput');
+        const emotionsGrid = document.getElementById('emotionsGrid');
+        const welcomeOverlay = document.getElementById('welcomeOverlay');
+        const welcomeUsernameSpan = document.getElementById('welcomeUsername');
+        const profileUsernameInput = document.getElementById('profileUsernameInput');
+        const profileEmojiDisplay = document.getElementById('profileEmojiDisplay');
+        const totalInteractions = document.getElementById('totalInteractions');
+        const positiveEmotions = document.getElementById('positiveEmotions');
+        const currentMood = document.getElementById('currentMood');
+        const moodStreak = document.getElementById('moodStreak');
+        const diaryEntriesContainer = document.getElementById('diaryEntries');
+        const totalEntriesStat = document.getElementById('totalEntries');
+        const writingStreakStat = document.getElementById('writingStreak');
+        const diaryForm = document.getElementById('diaryForm');
+        const diaryEntryText = document.getElementById('diaryEntryText');
+        const selectedDiaryMoodInput = document.getElementById('selectedDiaryMood');
+        const diaryMoodSelector = document.getElementById('diaryMoodSelector');
+        const diaryEntryForm = document.getElementById('diaryEntryForm');
+        const promptText = document.getElementById('promptText');
+        
+        let moodDistributionChart;
+        let diaryActivityChart;
+
+        const prompts = [
+            "¿Qué te hizo sonreír hoy?",
+            "¿Qué pequeño logro conseguiste hoy?",
             "¿Qué pensamiento positivo puedes llevar contigo hoy?",
-            "Describe algo que te hizo sonreír recientemente.",
-            "¿Por qué estás agradecido/a en este momento?",
-            "¿Cuál es un pequeño paso que puedes dar hoy hacia una meta importante?",
-            "Escribe sobre un desafío que superaste y qué aprendiste de él."
+            "Describe un momento de calma o paz que experimentaste.",
+            "¿Qué cosa nueva aprendiste hoy?",
+            "¿Qué estás agradecido de tener en tu vida?"
         ];
-        
-        // === NUEVO: VARIABLES PARA GRÁFICOS ===
-        let moodDistributionChart = null;
-        let diaryActivityChart = null;
-        
-        // ===================================
-        // INITIALIZATION
-        // ===================================
-        document.addEventListener('DOMContentLoaded', () => {
-            // === MODIFICADO: LÓGICA DE BIENVENIDA ===
-            const username = localStorage.getItem('username');
-            if (!username) {
-                showWelcomeOverlay();
-            } else {
-                initializeApp();
-            }
-        });
-        
-        function initializeApp() {
-            loadState();
-            renderEmotions();
-            renderDiaryForm();
-            renderDiaryEntries();
-            updateStats();
-            setupMemoryGame();
-            initializeEmojiSelector('profile'); // Selector para la página de perfil
-            loadProfile();
-            const savedMode = localStorage.getItem('darkMode');
-            if (savedMode === 'true') {
-                document.getElementById('darkModeToggle').checked = true;
-                toggleDarkMode(true);
-            }
-        }
 
-        // ===================================
-        // NAVIGATION & UI
-        // ===================================
         function showSection(sectionId, element) {
-            document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-            
-            document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
-            element.classList.add('active');
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
 
-            // === AÑADIDO: RENDERIZAR GRÁFICOS AL MOSTRAR LA SECCIÓN ===
+            const tabItems = document.querySelectorAll('.tab-item');
+            tabItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            if (element) {
+                element.classList.add('active');
+            }
+
             if (sectionId === 'history') {
-                renderHistoryCharts();
-            }
-
-            const fab = document.querySelector('.fab');
-            if (sectionId === 'diary') {
-                fab.style.display = 'none';
-            } else {
-                fab.style.display = 'flex';
-                 // Reajustar la posición del FAB para centrarlo
-                fab.style.alignItems = 'center';
-                fab.style.justifyContent = 'center';
-            }
-        }
-        
-        // === NUEVA FUNCIÓN DE NAVEGACIÓN ===
-        function navigateToHistory() {
-            const historyTab = document.querySelector('.tab-item[onclick*="history"]');
-            if (historyTab) {
-                showSection('history', historyTab);
+                renderCharts();
             }
         }
 
-        function showToast(message, type = 'success') {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.className = 'toast show';
-            toast.classList.add(type);
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+        function toggleDiaryForm() {
+            diaryForm.classList.toggle('show');
+            if (diaryForm.classList.contains('show')) {
+                diaryForm.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
-        function openModal(emotionKey, type = 'emotion') {
-            const modal = document.getElementById('emotionModal');
-            const modalContent = modal.querySelector('.modal-content');
+        function recordEmotionInteraction(emotion, type) {
+            const interactions = JSON.parse(localStorage.getItem('emotionInteractions')) || [];
+            interactions.push({
+                date: new Date().toISOString(),
+                emotion: emotion,
+                type: type
+            });
+            localStorage.setItem('emotionInteractions', JSON.stringify(interactions));
+            updateStats();
+            if (document.getElementById('history').classList.contains('active')) {
+                renderCharts();
+            }
+        }
+
+        function saveDiaryEntry(event) {
+            event.preventDefault();
+            const entryText = diaryEntryText.value;
+            const entryMood = selectedDiaryMoodInput.value;
+
+            if (!entryText || !entryMood) {
+                showToast("Por favor, selecciona una emoción y escribe tu entrada.", 'warning');
+                return;
+            }
+
+            const entries = JSON.parse(localStorage.getItem('diaryEntries')) || [];
+            const newEntry = {
+                date: new Date().toISOString(),
+                mood: entryMood,
+                text: entryText
+            };
+            entries.push(newEntry);
+            localStorage.setItem('diaryEntries', JSON.stringify(entries));
+
+            recordEmotionInteraction(entryMood, 'diary_entry');
+            showToast("Entrada guardada con éxito", 'success');
+
+            diaryEntryText.value = '';
+            selectedDiaryMoodInput.value = '';
+            document.querySelectorAll('.mood-option').forEach(option => option.classList.remove('selected'));
             
-            // Ocultar todas las secciones del modal
-            modalContent.querySelectorAll('.advice-section').forEach(sec => sec.style.display = 'none');
+            toggleDiaryForm();
+            renderDiaryEntries();
+        }
 
-            if (type === 'emotion') {
-                const emotion = emotionsData[emotionKey];
-                document.getElementById('modalEmoji').textContent = emotion.icon;
-                document.getElementById('modalTitle').textContent = emotion.name;
-                document.getElementById('modalDescription').textContent = emotion.description;
-                document.getElementById('consejosSection').style.display = 'block';
-                document.getElementById('actividadesSection').style.display = 'block';
-                
-                const adviceList = document.getElementById('adviceList');
-                adviceList.innerHTML = emotion.advice.map(item => `<li>${item}</li>`).join('');
-                const activityList = document.getElementById('activityList');
-                activityList.innerHTML = emotion.activities.map(item => `<li>${item}</li>`).join('');
+        function renderDiaryEntries() {
+            const entries = JSON.parse(localStorage.getItem('diaryEntries')) || [];
+            diaryEntriesContainer.innerHTML = '';
+            entries.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-            } else if (type === 'breathing') {
-                // Configurar modal para ejercicios de respiración
-                document.getElementById('modalEmoji').textContent = '🧘‍♀️';
-                document.getElementById('modalDescription').textContent = 'Sigue las instrucciones en pantalla.';
-                document.getElementById('breathingGuide').style.display = 'block';
+            if (entries.length === 0) {
+                diaryEntriesContainer.innerHTML = '<div class="card" style="text-align: center;">Aún no tienes entradas en tu diario. ¡Anímate a escribir la primera!</div>';
+            } else {
+                entries.forEach(entry => {
+                    const date = new Date(entry.date).toLocaleDateString('es-ES', {
+                        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                    });
+                    const emojiInfo = emotionsData[entry.mood];
+                    const entryHtml = `
+                        <div class="diary-entry card">
+                            <div class="diary-entry-header">
+                                <span class="diary-date">${date}</span>
+                                <span class="diary-mood">${emojiInfo ? emojiInfo.emoji : ''}</span>
+                            </div>
+                            <div class="diary-content">${entry.text}</div>
+                        </div>
+                    `;
+                    diaryEntriesContainer.innerHTML += entryHtml;
+                });
+            }
+        }
+
+        function getWritingStreak(entries) {
+            if (entries.length === 0) return 0;
+            
+            const sortedDates = entries.map(e => new Date(e.date).toLocaleDateString()).filter((value, index, self) => self.indexOf(value) === index).sort();
+            
+            let streak = 0;
+            let currentDay = new Date();
+            let lastDay = new Date(sortedDates[sortedDates.length - 1]);
+            
+            if (lastDay.toLocaleDateString() !== currentDay.toLocaleDateString() && new Date(lastDay.setDate(lastDay.getDate() + 1)).toLocaleDateString() !== currentDay.toLocaleString()) {
+                return 0;
             }
 
+            for (let i = sortedDates.length - 1; i >= 0; i--) {
+                const date = new Date(sortedDates[i]);
+                if (date.toLocaleDateString() === currentDay.toLocaleDateString() || new Date(date.setDate(date.getDate() + 1)).toLocaleDateString() === currentDay.toLocaleDateString()) {
+                    streak++;
+                    currentDay = new Date(currentDay.setDate(currentDay.getDate() - 1));
+                } else {
+                    break;
+                }
+            }
+            return streak;
+        }
+
+        function renderHomeEmotions() {
+            homeMoodInput.innerHTML = Object.keys(emotionsData).map(key => {
+                const emotion = emotionsData[key];
+                return `<div class="mood-emoji" onclick="handleEmotionClick('${key}')">
+                            <div class="icon">${emotion.emoji}</div>
+                            <div class="emoji-label">${key}</div>
+                        </div>`;
+            }).join('');
+
+            renderDiaryMoodSelector();
+        }
+
+        function handleEmotionClick(emotionName) {
+            recordEmotionInteraction(emotionName, 'mood_input');
+            showAdviceModal(emotionName);
+        }
+
+        function renderEmotions() {
+            emotionsGrid.innerHTML = Object.keys(emotionsData).map(key => {
+                const emotion = emotionsData[key];
+                const level = Math.random() * 100;
+                return `<div class="emotion-card" onclick="showAdviceModal('${key}')">
+                            <div class="emotion-icon">${emotion.emoji}</div>
+                            <div class="emotion-name">${key}</div>
+                            <div class="level-bar"><div class="level-fill" style="width:${level}%"></div></div>
+                            <div class="level-percentage">${Math.round(level)}%</div>
+                        </div>`;
+            }).join('');
+        }
+
+        function renderDiaryMoodSelector() {
+            diaryMoodSelector.innerHTML = Object.keys(emotionsData).map(key => {
+                const emotion = emotionsData[key];
+                return `<div class="mood-option" onclick="selectDiaryMood(this, '${key}')">
+                            <div class="mood-icon">${emotion.emoji}</div>
+                            <div class="mood-label">${key}</div>
+                        </div>`;
+            }).join('');
+        }
+
+        function selectDiaryMood(element, mood) {
+            document.querySelectorAll('.mood-option').forEach(option => option.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedDiaryMoodInput.value = mood;
+        }
+
+        function showAdviceModal(emotionName) {
+            const modal = document.getElementById('adviceModal');
+            const data = emotionsData[emotionName];
+            
+            document.getElementById('modalEmoji').textContent = data.emoji;
+            document.getElementById('modalTitle').textContent = emotionName;
+            document.getElementById('modalSubtitle').textContent = data.subtitle;
+
+            const adviceList = document.getElementById('adviceList');
+            adviceList.innerHTML = '';
+            data.advice.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                adviceList.appendChild(li);
+            });
+            
+            const activitiesContainer = document.getElementById('additionalInfo');
+            activitiesContainer.innerHTML = `
+                <div class="advice-section">
+                    <h4>Actividades Sugeridas</h4>
+                    <ul class="advice-list">
+                        ${data.activities.map(act => `<li>${act}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            
             modal.classList.add('show');
         }
 
-
         function closeModal() {
-            document.getElementById('emotionModal').classList.remove('show');
-            // === AÑADIDO: Detener ejercicio de respiración al cerrar ===
-            stopBreathingExercise();
+            const modal = document.getElementById('adviceModal');
+            modal.classList.remove('show');
+        }
+
+        function randomizeEmotions() {
+            renderEmotions();
+        }
+
+        function resetAllEmotions() {
+            renderEmotions();
         }
         
-        // ===================================
-        // PROFILE & WELCOME MANAGEMENT
-        // ===================================
-        function showWelcomeOverlay() {
-            const overlay = document.getElementById('welcomeOverlay');
-            overlay.classList.add('show');
-            initializeEmojiSelector('welcome');
+        function updateStats() {
+            const interactions = JSON.parse(localStorage.getItem('emotionInteractions')) || [];
+            const diaryEntries = JSON.parse(localStorage.getItem('diaryEntries')) || [];
+            totalInteractions.textContent = interactions.length;
+            totalEntriesStat.textContent = diaryEntries.length;
+
+            const positiveMoods = ['Alegría', 'Calma'];
+            const positiveCount = interactions.filter(e => positiveMoods.includes(e.emotion)).length;
+            const positivePercentage = interactions.length > 0 ? (positiveCount / interactions.length * 100).toFixed(0) : 0;
+            positiveEmotions.textContent = `${positivePercentage}%`;
+
+            const lastEntry = interactions[interactions.length - 1];
+            if (lastEntry) {
+                currentMood.textContent = lastEntry.emotion;
+            } else {
+                currentMood.textContent = '---';
+            }
+
+            const uniqueDates = new Set(interactions.map(i => new Date(i.date).toLocaleDateString()));
+            moodStreak.textContent = getStreak(Array.from(uniqueDates));
+            writingStreakStat.textContent = getStreak(diaryEntries.map(e => new Date(e.date).toLocaleDateString()));
         }
 
-        function initializeEmojiSelector(context) {
-            const selectorId = context === 'welcome' ? 'welcomeEmojiSelector' : 'emojiSelector';
-            const inputId = context === 'welcome' ? 'welcomeSelectedEmojiInput' : 'selectedEmojiInput';
-            const displayId = context === 'profile' ? 'profileEmojiDisplay' : null;
+        function getStreak(dates) {
+            if (dates.length === 0) return 0;
+
+            let streak = 0;
+            let lastDate = new Date();
+
+            const today = lastDate.toLocaleDateString();
+            const yesterday = new Date(lastDate);
+            yesterday.setDate(yesterday.getDate() - 1);
+            const yesterdayString = yesterday.toLocaleDateString();
             
-            const container = document.getElementById(selectorId);
-            container.innerHTML = ''; 
-            EMOJI_PROFILE_OPTIONS.forEach(emoji => {
-                const choice = document.createElement('div');
-                choice.classList.add('emoji-choice');
-                choice.textContent = emoji;
-                choice.onclick = () => {
-                    container.querySelectorAll('.emoji-choice').forEach(el => el.classList.remove('selected'));
-                    choice.classList.add('selected');
-                    document.getElementById(inputId).value = emoji;
-                    if (displayId) {
-                        document.getElementById(displayId).textContent = emoji;
-                    }
-                };
-                container.appendChild(choice);
+            const uniqueSortedDates = [...new Set(dates)].sort((a,b) => new Date(a) - new Date(b));
+            
+            if (uniqueSortedDates.includes(today)) {
+                lastDate = today;
+                streak = 1;
+            } else if (uniqueSortedDates.includes(yesterdayString)) {
+                lastDate = yesterdayString;
+                streak = 1;
+            } else {
+                return 0;
+            }
+
+            for (let i = uniqueSortedDates.length - 1; i >= 0; i--) {
+                const currentDate = uniqueSortedDates[i];
+                const prevDay = new Date(currentDate);
+                prevDay.setDate(prevDay.getDate() + 1);
+                
+                if (prevDay.toLocaleDateString() === lastDate) {
+                    streak++;
+                    lastDate = currentDate;
+                }
+            }
+            return streak;
+        }
+
+        function renderCharts() {
+            const interactions = JSON.parse(localStorage.getItem('emotionInteractions')) || [];
+            updateMoodDistributionChart(interactions);
+            updateDiaryActivityChart(interactions);
+        }
+
+        function updateMoodDistributionChart(interactions) {
+            if (moodDistributionChart) {
+                moodDistributionChart.destroy();
+            }
+
+            const emotionCounts = {};
+            Object.keys(emotionsData).forEach(emotion => emotionCounts[emotion] = 0);
+            interactions.forEach(i => {
+                if (i.emotion in emotionCounts) {
+                    emotionCounts[i.emotion]++;
+                }
             });
+
+            const labels = Object.keys(emotionCounts);
+            const data = Object.values(emotionCounts);
+            const backgroundColors = labels.map(label => {
+                if (['Alegría', 'Calma'].includes(label)) return '#4facfe';
+                if (['Tristeza', 'Enojo', 'Miedo'].includes(label)) return '#f5576c';
+                return '#999';
+            });
+
+            const ctx = document.getElementById('moodDistributionChart').getContext('2d');
+            moodDistributionChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: backgroundColors,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: getComputedStyle(document.body).getPropertyValue('--text-color'),
+                            }
+                        },
+                        title: {
+                            display: false,
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateDiaryActivityChart(interactions) {
+            if (diaryActivityChart) {
+                diaryActivityChart.destroy();
+            }
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const dates = [];
+            for (let i = 6; i >= 0; i--) {
+                const d = new Date(today);
+                d.setDate(today.getDate() - i);
+                dates.push(d);
+            }
+
+            const activityData = dates.map(date => {
+                const count = interactions.filter(i => {
+                    const entryDate = new Date(i.date);
+                    return entryDate.getDate() === date.getDate() &&
+                           entryDate.getMonth() === date.getMonth() &&
+                           entryDate.getFullYear() === date.getFullYear();
+                }).length;
+                return count;
+            });
+            
+            const labels = dates.map(date => date.toLocaleDateString('es-ES', { weekday: 'short' }));
+            
+            const ctx = document.getElementById('diaryActivityChart').getContext('2d');
+            diaryActivityChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Registros por día',
+                        data: activityData,
+                        backgroundColor: '#667eea',
+                        borderColor: '#764ba2',
+                        borderWidth: 1,
+                        borderRadius: 5,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0,
+                                color: getComputedStyle(document.body).getPropertyValue('--text-color'),
+                            },
+                            grid: {
+                                color: getComputedStyle(document.body).getPropertyValue('--card-border-color'),
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: getComputedStyle(document.body).getPropertyValue('--text-color'),
+                            },
+                            grid: {
+                                display: false,
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+
+        function setupEmojiSelector(containerId, inputId) {
+            const container = document.getElementById(containerId);
+            const input = document.getElementById(inputId);
+            const emojis = ['😊', '😂', '😎', '🤩', '🤔', '😴', '😜', '😇', '❤️'];
+            container.innerHTML = emojis.map(emoji => 
+                `<span class="emoji-choice" data-emoji="${emoji}" onclick="selectEmoji(this, '${inputId}')">${emoji}</span>`
+            ).join('');
+
+            if (input.value) {
+                const selected = container.querySelector(`[data-emoji="${input.value}"]`);
+                if (selected) {
+                    selected.classList.add('selected');
+                }
+            }
+        }
+
+        function selectEmoji(element, inputId) {
+            const container = element.parentElement;
+            container.querySelectorAll('.emoji-choice').forEach(e => e.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById(inputId).value = element.getAttribute('data-emoji');
         }
         
         function saveWelcomeProfile(event) {
             event.preventDefault();
-            const username = document.getElementById('welcomeUsernameInput').value.trim();
-            const emoji = document.getElementById('welcomeSelectedEmojiInput').value.trim();
-            
-            if (!username || !emoji) {
-                alert('Por favor, completa tu nombre y elige un emoji.');
-                return;
-            }
-            
-            localStorage.setItem('username', username);
-            localStorage.setItem('userEmoji', emoji);
-            
-            document.getElementById('welcomeOverlay').classList.remove('show');
-            initializeApp();
-        }
-        
-        function updateProfileEmoji(emoji) {
-            if (emoji) {
-                document.getElementById('profileEmojiDisplay').textContent = emoji;
-                const profileTabIcon = document.querySelector('.tab-item[onclick*="profile"] .icon');
-                if (profileTabIcon) {
-                    profileTabIcon.textContent = emoji;
-                }
-                const container = document.getElementById('emojiSelector');
-                container.querySelectorAll('.emoji-choice').forEach(el => {
-                    el.classList.toggle('selected', el.textContent === emoji);
-                });
-                document.getElementById('selectedEmojiInput').value = emoji;
+            const username = document.getElementById('welcomeUsernameInput').value;
+            const emoji = document.getElementById('welcomeSelectedEmojiInput').value;
+            if (username && emoji) {
+                localStorage.setItem('username', username);
+                localStorage.setItem('userEmoji', emoji);
+                welcomeOverlay.classList.remove('show');
+                updateProfileDisplay();
+                showToast("¡Bienvenido/a, " + username + "!", 'success');
+            } else {
+                showToast("Por favor, completa todos los campos.", 'warning');
             }
         }
 
         function saveProfile(event) {
             event.preventDefault();
-            const usernameInput = document.getElementById('usernameInput');
-            const emojiInput = document.getElementById('selectedEmojiInput');
-            const username = usernameInput.value.trim();
-            const emoji = emojiInput.value.trim();
-            let saved = false;
+            const username = document.getElementById('profileUsernameInput').value;
+            const emoji = document.getElementById('selectedEmojiInput').value;
+            localStorage.setItem('username', username);
+            localStorage.setItem('userEmoji', emoji);
+            updateProfileDisplay();
+            showToast("Perfil actualizado.", 'success');
+        }
+
+        function updateProfileDisplay() {
+            const username = localStorage.getItem('username');
+            const userEmoji = localStorage.getItem('userEmoji');
             if (username) {
-                localStorage.setItem('username', username);
-                document.getElementById('welcomeUsername').textContent = username;
-                saved = true;
+                welcomeUsernameSpan.textContent = username;
+                profileUsernameInput.value = username;
             }
-
-            if (emoji) {
-                localStorage.setItem('userEmoji', emoji);
-                updateProfileEmoji(emoji);
-                saved = true;
-            }
-            
-            if (saved) {
-                showToast('Perfil guardado con éxito.', 'success');
+            if (userEmoji) {
+                profileEmojiDisplay.textContent = userEmoji;
+                document.getElementById('selectedEmojiInput').value = userEmoji;
             }
         }
         
-        function loadProfile() {
-            const savedUsername = localStorage.getItem('username') || 'Usuario';
-            document.getElementById('usernameInput').value = savedUsername;
-            document.getElementById('welcomeUsername').textContent = savedUsername;
-
-            const savedEmoji = localStorage.getItem('userEmoji') || '👤';
-            updateProfileEmoji(savedEmoji);
-        }
-        
-        // === El resto del código JS sigue aquí ===
-        
-        // ===================================
-        // EMOTIONS MANAGEMENT
-        // ===================================
-        function renderEmotions() {
-            const grid = document.getElementById('emotionsGrid');
-            grid.innerHTML = '';
-            for (const key in emotionsData) {
-                const level = emotionLevels[key] || 0;
-                const emotion = emotionsData[key];
-                const card = document.createElement('div');
-                card.className = 'emotion-card';
-                card.innerHTML = `
-                    <div class="emotion-icon" style="background: ${emotion.color}30; color: ${emotion.color};">${emotion.icon}</div>
-                    <div class="emotion-name">${emotion.name}</div>
-                    <div class="level-bar"><div class="level-fill" style="width: ${level}%;"></div></div>
-                    <div class="level-percentage">${level}%</div>
-                `;
-                card.onclick = () => {
-                    updateEmotionLevel(key, 10);
-                    openModal(key, 'emotion');
-                };
-                grid.appendChild(card);
-            }
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show ' + type;
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
         }
 
-        function updateEmotionLevel(key, amount) {
-            emotionLevels[key] = Math.min(100, (emotionLevels[key] || 0) + amount);
-            saveState();
-            renderEmotions();
-            updateStats();
-        }
-
-        function randomizeEmotions() {
-            for (const key in emotionsData) {
-                emotionLevels[key] = Math.floor(Math.random() * 101);
-            }
-            saveState();
-            renderEmotions();
-            updateStats();
-            showToast('Niveles de emoción aleatorizados.', 'success');
-        }
-        
-        function resetAllEmotions() {
-            if (confirm('¿Estás seguro de que quieres reiniciar todos los niveles de emoción?')) {
-                emotionLevels = {};
-                saveState();
-                renderEmotions();
-                updateStats();
-                showToast('Niveles de emoción reiniciados.', 'warning');
-            }
-        }
-
-        function selectMood(element, mood) {
-            document.querySelectorAll('.mood-emoji').forEach(el => el.classList.remove('selected'));
-            element.classList.add('selected');
-            document.getElementById('currentMood').textContent = mood;
-            localStorage.setItem('currentMood', mood);
-        }
-
-        // ===================================
-        // STATS & DATA
-        // ===================================
-        function updateStats() {
-            const totalInteractions = Object.values(emotionLevels).reduce((sum, level) => sum + (level > 0 ? 1 : 0), 0);
-            document.getElementById('totalInteractions').textContent = totalInteractions;
-            
-            const positiveKeys = ['alegria', 'calma', 'gratitud'];
-            const totalLevels = Object.values(emotionLevels).reduce((sum, level) => sum + level, 0);
-            const positiveLevels = positiveKeys.reduce((sum, key) => sum + (emotionLevels[key] || 0), 0);
-            const positivePercentage = totalLevels > 0 ? Math.round((positiveLevels / totalLevels) * 100) : 0;
-            document.getElementById('positiveEmotions').textContent = `${positivePercentage}%`;
-
-            const diaryEntries = JSON.parse(localStorage.getItem('diaryEntries') || '[]');
-            document.getElementById('totalEntries').textContent = diaryEntries.length;
-        }
-
-        // ===================================
-        // DIARY MANAGEMENT
-        // ===================================
-        function toggleDiaryForm() {
-            const diaryTab = document.querySelector('.tab-item[onclick*="diary"]');
-            showSection('diary', diaryTab);
-            const form = document.getElementById('diaryForm');
-            form.classList.toggle('show');
-            if (form.classList.contains('show')) {
-                form.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        function renderDiaryForm(entryToEdit = null) {
-            const formContainer = document.getElementById('diaryForm');
-            const isEditing = entryToEdit !== null;
-            const entryId = isEditing ? entryToEdit.id : Date.now();
-            const entryDate = isEditing ? new Date(entryToEdit.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
-            const entryContent = isEditing ? entryToEdit.content : '';
-            const entryMood = isEditing ? entryToEdit.mood : '😊';
-
-            const moodOptions = ['😄', '😊', '😐', '😢', '😠', '😌', '🥰'];
-            formContainer.innerHTML = `
-                <form onsubmit="saveDiaryEntry(event, ${entryId}, ${isEditing})">
-                    <div class="form-group">
-                        <label class="form-label">Estado de ánimo de hoy</label>
-                        <div class="mood-selector">
-                            ${moodOptions.map(mood => `
-                                <div class="mood-option ${mood === entryMood ? 'selected' : ''}" onclick="selectDiaryMood(this, '${mood}')">
-                                    <div class="mood-icon">${mood}</div>
-                                </div>
-                            `).join('')}
-                            <input type="hidden" id="diaryMoodInput" value="${entryMood}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="diaryDate" class="form-label">Fecha</label>
-                        <input type="date" id="diaryDate" class="form-input" value="${entryDate}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="diaryContent" class="form-label">${isEditing ? 'Edita tu entrada' : '¿Qué pasó hoy?'}</label>
-                        <textarea id="diaryContent" class="form-textarea" placeholder="Escribe aquí tus pensamientos..." required>${entryContent}</textarea>
-                    </div>
-                    <div class="control-buttons row">
-                        <button type="submit" class="btn-mobile btn-primary">${isEditing ? 'Actualizar' : 'Guardar'}</button>
-                        <button type="button" class="btn-mobile btn-secondary" onclick="cancelDiaryEdit()">Cancelar</button>
-                    </div>
-                </form>
-            `;
-        }
-        
-        function selectDiaryMood(element, mood) {
-            document.querySelectorAll('.mood-option').forEach(el => el.classList.remove('selected'));
-            element.classList.add('selected');
-            document.getElementById('diaryMoodInput').value = mood;
-        }
-
-        function cancelDiaryEdit() {
-            document.getElementById('diaryForm').classList.remove('show');
-            renderDiaryForm(); 
-        }
-        
-        function saveDiaryEntry(event, entryId, isEditing) {
-            event.preventDefault();
-            const newEntry = {
-                id: entryId,
-                date: document.getElementById('diaryDate').value,
-                content: document.getElementById('diaryContent').value,
-                mood: document.getElementById('diaryMoodInput').value
-            };
-            let entries = JSON.parse(localStorage.getItem('diaryEntries') || '[]');
-            if (isEditing) {
-                entries = entries.map(entry => entry.id === entryId ? newEntry : entry);
-            } else {
-                entries.push(newEntry);
-            }
-
-            localStorage.setItem('diaryEntries', JSON.stringify(entries));
-            renderDiaryEntries();
-            updateStats();
-            cancelDiaryEdit();
-            showToast(isEditing ? 'Entrada actualizada.' : 'Entrada guardada.', 'success');
-        }
-
-        function renderDiaryEntries() {
-            const container = document.getElementById('diaryEntries');
-            const entries = JSON.parse(localStorage.getItem('diaryEntries') || '[]').sort((a,b) => new Date(b.date) - new Date(a.date));
-            if (entries.length === 0) {
-                container.innerHTML = `<div class="card" style="text-align:center;">Aún no has escrito nada. ¡Toca el botón ✍️ para empezar!</div>`;
-                return;
-            }
-            container.innerHTML = entries.map(entry => `
-                <div class="diary-entry">
-                    <div class="diary-entry-header">
-                        <div class="diary-date">${new Date(entry.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-                        <div class="diary-mood">${entry.mood}</div>
-                    </div>
-                    <div class="diary-content">${entry.content.replace(/\n/g, '<br>')}</div>
-                    <div class="control-buttons row" style="margin-top: 12px; justify-content: flex-end;">
-                        <button class="btn-mobile btn-primary" style="padding: 8px 12px; font-size: 12px;" onclick="editDiaryEntry(${entry.id})">✏️ Editar</button>
-                        <button class="btn-mobile btn-secondary" style="padding: 8px 12px; font-size: 12px;" onclick="deleteDiaryEntry(${entry.id})">🗑️ Borrar</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function editDiaryEntry(id) {
-            const entries = JSON.parse(localStorage.getItem('diaryEntries') || '[]');
-            const entryToEdit = entries.find(entry => entry.id === id);
-            if (entryToEdit) {
-                renderDiaryForm(entryToEdit);
-                const form = document.getElementById('diaryForm');
-                form.classList.add('show');
-                form.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        function deleteDiaryEntry(id) {
-            if (confirm('¿Seguro que quieres borrar esta entrada del diario?')) {
-                let entries = JSON.parse(localStorage.getItem('diaryEntries') || '[]');
-                entries = entries.filter(entry => entry.id !== id);
-                localStorage.setItem('diaryEntries', JSON.stringify(entries));
-                renderDiaryEntries();
-                updateStats();
-                showToast('Entrada borrada.', 'warning');
-            }
+        function navigateToHistory() {
+            showSection('history', document.querySelector('.tab-item[onclick="showSection(\'history\', this)"]'));
         }
 
         function getNewPrompt() {
-            currentPromptIndex = (currentPromptIndex + 1) % writingPrompts.length;
-            document.getElementById('promptText').textContent = writingPrompts[currentPromptIndex];
+            const randomIndex = Math.floor(Math.random() * prompts.length);
+            promptText.textContent = prompts[randomIndex];
         }
-        
-        // ===================================
-        // GAME LOGIC: BUBBLE BURST
-        // ===================================
-        let gameInterval, timerInterval;
+
+
         let bubblesPopped = 0;
         let gameTime = 60;
+        let gameInterval;
 
         function startGame() {
-            resetGame();
-            document.getElementById('startGameBtn').disabled = true;
-            
-            gameInterval = setInterval(createBubble, 500);
-            timerInterval = setInterval(() => {
-                gameTime--;
-                document.getElementById('gameTime').textContent = gameTime;
-                if (gameTime <= 0) {
-                    endGame();
-                 }
-            }, 1000);
-        }
-
-        function endGame() {
-            clearInterval(gameInterval);
-            clearInterval(timerInterval);
-            document.getElementById('startGameBtn').disabled = false;
-            showToast(`¡Juego terminado! Explotaste ${bubblesPopped} burbujas.`, 'success');
-        }
-        
-        function resetGame() {
-            clearInterval(gameInterval);
-            clearInterval(timerInterval);
-            document.getElementById('gameArea').innerHTML = '';
+            const gameArea = document.getElementById('gameArea');
             bubblesPopped = 0;
             gameTime = 60;
             document.getElementById('bubblesPopped').textContent = bubblesPopped;
             document.getElementById('gameTime').textContent = gameTime;
-            document.getElementById('startGameBtn').disabled = false;
+            gameArea.innerHTML = '';
+            document.getElementById('startGameBtn').disabled = true;
+
+            gameInterval = setInterval(() => {
+                gameTime--;
+                document.getElementById('gameTime').textContent = gameTime;
+                if (gameTime <= 0) {
+                    clearInterval(gameInterval);
+                    alert(`¡Tiempo! Reventaste ${bubblesPopped} burbujas.`);
+                    document.getElementById('startGameBtn').disabled = false;
+                }
+            }, 1000);
+
+            for (let i = 0; i < 15; i++) {
+                createBubble();
+            }
         }
 
         function createBubble() {
             const gameArea = document.getElementById('gameArea');
             const bubble = document.createElement('div');
+            const size = Math.random() * 40 + 20;
             bubble.className = 'bubble';
-            const size = Math.random() * 40 + 20; 
             bubble.style.width = `${size}px`;
             bubble.style.height = `${size}px`;
             bubble.style.left = `${Math.random() * (gameArea.clientWidth - size)}px`;
-            bubble.style.animationDuration = `${Math.random() * 3 + 4}s`;
-            
+            bubble.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            bubble.style.animationDelay = `${Math.random() * 1}s`;
             bubble.onclick = () => {
-                bubble.remove();
                 bubblesPopped++;
                 document.getElementById('bubblesPopped').textContent = bubblesPopped;
+                bubble.remove();
+                createBubble();
             };
-            
             gameArea.appendChild(bubble);
-            setTimeout(() => { bubble.remove(); }, 7000);
         }
 
-        // ===================================
-        // GAME LOGIC: MEMORY GAME
-        // ===================================
-        const cardEmojis = ['😄', '😢', '😠', '😨', '😌', '🥰'];
-        let memoryCards = [];
-        let hasFlippedCard = false;
+        function resetGame() {
+            clearInterval(gameInterval);
+            document.getElementById('bubblesPopped').textContent = '0';
+            document.getElementById('gameTime').textContent = '60';
+            document.getElementById('gameArea').innerHTML = '';
+            document.getElementById('startGameBtn').disabled = false;
+        }
+
+        let isBreathing = false;
+        let breathingInterval;
+        let breathingTimeout;
+        const breathingContainer = document.getElementById('breathingExerciseContainer');
+        const gameContent = document.getElementById('gameContent');
+        const breathingCircle = document.getElementById('breathingExerciseCircle');
+        const breathingInstruction = document.getElementById('breathingInstruction');
+        const breathingProgressBar = document.getElementById('breathingProgressBar');
+        let progressInterval;
+
+        function startBreathingExercise(type) {
+            gameContent.style.display = 'none';
+            breathingContainer.style.display = 'flex';
+            breathingContainer.scrollIntoView({ behavior: 'smooth' });
+
+            const totalDuration = 180;
+            let progress = 0;
+            let totalSteps = totalDuration * 10;
+            let currentStep = 0;
+
+            if (type === '4-7-8') {
+                runBreathingCycle(4, 7, 8, '4-7-8');
+            } else if (type === 'cuadrada') {
+                runBreathingCycle(4, 4, 4, 'cuadrada');
+            }
+
+            progressInterval = setInterval(() => {
+                currentStep++;
+                progress = (currentStep / totalSteps) * 100;
+                breathingProgressBar.style.width = `${progress}%`;
+            }, 100);
+
+            breathingTimeout = setTimeout(() => {
+                stopBreathingExercise();
+                alert("¡Ejercicio de respiración completado!");
+            }, totalDuration * 1000);
+        }
+
+        function runBreathingCycle(inhale, hold, exhale, type) {
+            isBreathing = true;
+            let step = 0;
+            const instructions = type === '4-7-8' ? ['Inhala...', 'Aguanta...', 'Exhala...'] : ['Inhala...', 'Aguanta...', 'Exhala...', 'Aguanta...'];
+            const durations = type === '4-7-8' ? [inhale, hold, exhale] : [inhale, hold, exhale, hold];
+            const animationDurations = type === '4-7-8' ? [4, 7, 8] : [4, 4, 4, 4];
+            let totalTime = durations.reduce((a, b) => a + b, 0);
+
+            breathingInterval = setInterval(() => {
+                const currentInstruction = instructions[step];
+                const currentDuration = durations[step];
+                const currentAnimationDuration = animationDurations[step];
+                
+                breathingInstruction.textContent = `${currentInstruction} (${currentDuration}s)`;
+                breathingCircle.style.animationDuration = `${currentAnimationDuration}s`;
+                breathingCircle.style.animationName = currentInstruction.includes('Inhala') ? 'breathe' : 'none';
+
+                if (currentInstruction.includes('Exhala')) {
+                    breathingCircle.style.animationName = 'breathe-reverse';
+                }
+
+                step = (step + 1) % instructions.length;
+
+                if (step === 0) {
+                    breathingCircle.style.animation = 'none';
+                    void breathingCircle.offsetWidth;
+                    breathingCircle.style.animation = null;
+                }
+
+            }, totalTime * 1000);
+
+            breathingCircle.style.animationPlayState = 'running';
+        }
+
+        function stopBreathingExercise() {
+            isBreathing = false;
+            clearInterval(breathingInterval);
+            clearInterval(progressInterval);
+            clearTimeout(breathingTimeout);
+            breathingContainer.style.display = 'none';
+            gameContent.style.display = 'block';
+            breathingCircle.style.animationName = 'none';
+            breathingProgressBar.style.width = '0%';
+        }
+
+        let memoryGameCards = [];
+        let flippedCards = [];
         let lockBoard = false;
-        let firstCard, secondCard;
-        let memoryTries = 0;
-        let memoryMatches = 0;
+        let matchCount = 0;
+        let tryCount = 0;
+
+        const memoryEmotions = [
+            '😁', '😢', '😡', '😌', '😮', '🤩'
+        ];
 
         function setupMemoryGame() {
-            const gameArea = document.getElementById('memoryGameArea');
-            gameArea.innerHTML = '';
-            memoryCards = [...cardEmojis, ...cardEmojis].sort(() => 0.5 - Math.random());
-            memoryCards.forEach(emoji => {
-                const card = document.createElement('div');
-                card.classList.add('memory-card');
-                card.dataset.emoji = emoji;
-                card.innerHTML = `
-                    <div class="front-face">${emoji}</div>
-                    <div class="back-face">❔</div>
+            const memoryGameArea = document.getElementById('memoryGameArea');
+            memoryGameCards = [...memoryEmotions, ...memoryEmotions]
+                .sort(() => 0.5 - Math.random())
+                .map(emoji => ({ emoji, matched: false }));
+            
+            memoryGameArea.innerHTML = '';
+            matchCount = 0;
+            tryCount = 0;
+            document.getElementById('memoryTries').textContent = tryCount;
+            document.getElementById('memoryMatches').textContent = matchCount;
+
+            memoryGameCards.forEach((card, index) => {
+                const cardElement = document.createElement('div');
+                cardElement.classList.add('memory-card');
+                cardElement.dataset.index = index;
+                cardElement.innerHTML = `
+                    <div class="back-face">🧠</div>
+                    <div class="front-face">${card.emoji}</div>
                 `;
-                card.addEventListener('click', flipCard);
-                gameArea.appendChild(card);
+                cardElement.addEventListener('click', () => flipCard(cardElement));
+                memoryGameArea.appendChild(cardElement);
             });
-            resetMemoryGame();
         }
 
-        function flipCard() {
-            if (lockBoard || this === firstCard) return;
-            this.classList.add('flip');
-
-            if (!hasFlippedCard) {
-                hasFlippedCard = true;
-                firstCard = this;
+        function flipCard(cardElement) {
+            if (lockBoard || cardElement.classList.contains('flip') || cardElement.classList.contains('match')) {
                 return;
             }
 
-            secondCard = this;
-            checkForMatch();
+            cardElement.classList.add('flip');
+            flippedCards.push(cardElement);
+
+            if (flippedCards.length === 2) {
+                tryCount++;
+                document.getElementById('memoryTries').textContent = tryCount;
+                checkForMatch();
+            }
         }
 
         function checkForMatch() {
-            memoryTries++;
-            document.getElementById('memoryTries').textContent = memoryTries;
-            let isMatch = firstCard.dataset.emoji === secondCard.dataset.emoji;
-            isMatch ? disableCards() : unflipCards();
+            const [firstCard, secondCard] = flippedCards;
+            const isMatch = firstCard.querySelector('.front-face').textContent === secondCard.querySelector('.front-face').textContent;
+
+            if (isMatch) {
+                disableCards();
+            } else {
+                unflipCards();
+            }
         }
 
         function disableCards() {
-            firstCard.removeEventListener('click', flipCard);
-            secondCard.removeEventListener('click', flipCard);
+            lockBoard = true;
+            const [firstCard, secondCard] = flippedCards;
             firstCard.classList.add('match');
             secondCard.classList.add('match');
-            memoryMatches++;
-            document.getElementById('memoryMatches').textContent = memoryMatches;
-
-            if (memoryMatches === cardEmojis.length) {
-                setTimeout(() => showToast('¡Felicidades! Encontraste todas las parejas.', 'success'), 500);
-            }
+            firstCard.removeEventListener('click', flipCard);
+            secondCard.removeEventListener('click', flipCard);
+            matchCount++;
+            document.getElementById('memoryMatches').textContent = matchCount;
             resetBoard();
         }
 
         function unflipCards() {
             lockBoard = true;
             setTimeout(() => {
-                firstCard.classList.remove('flip');
-                secondCard.classList.remove('flip');
+                flippedCards.forEach(card => card.classList.remove('flip'));
                 resetBoard();
-            }, 1000);
+            }, 1500);
         }
 
         function resetBoard() {
-            [hasFlippedCard, lockBoard] = [false, false];
-            [firstCard, secondCard] = [null, null];
+            [flippedCards, lockBoard] = [[], false];
         }
 
         function resetMemoryGame() {
-            memoryTries = 0;
-            memoryMatches = 0;
-            document.getElementById('memoryTries').textContent = memoryTries;
-            document.getElementById('memoryMatches').textContent = memoryMatches;
-            document.querySelectorAll('.memory-card').forEach(card => card.classList.remove('flip', 'match'));
-            setTimeout(setupMemoryGame, 500);
+            setupMemoryGame();
         }
-        
-        // ===================================
-        // LEARN SECTION
-        // ===================================
+
         function toggleNeuroExplanation(element) {
             const explanation = element.querySelector('.neuro-explanation');
             const allExplanations = document.querySelectorAll('.neuro-explanation');
-            
             allExplanations.forEach(exp => {
                 if (exp !== explanation) {
                     exp.classList.remove('show');
@@ -1232,192 +1603,41 @@
             explanation.classList.toggle('show');
         }
 
-        // ===================================
-        // APP DATA & SETTINGS
-        // ===================================
-        function toggleDarkMode(isDark) {
-            document.body.classList.toggle('dark-mode', isDark);
-            localStorage.setItem('darkMode', isDark);
-        }
-        
-        function saveState() {
-            localStorage.setItem('emotionLevels', JSON.stringify(emotionLevels));
-        }
-
-        function loadState() {
-            const savedLevels = localStorage.getItem('emotionLevels');
-            if (savedLevels) {
-                emotionLevels = JSON.parse(savedLevels);
-            }
-            const savedMood = localStorage.getItem('currentMood');
-            if(savedMood) {
-                document.getElementById('currentMood').textContent = savedMood;
-            }
-        }
-        
-        function exportData() {
-            const data = {
-                username: localStorage.getItem('username'),
-                userEmoji: localStorage.getItem('userEmoji'),
-                emotionLevels: JSON.parse(localStorage.getItem('emotionLevels') || '{}'),
-                diaryEntries: JSON.parse(localStorage.getItem('diaryEntries') || '[]'),
-                darkMode: localStorage.getItem('darkMode'),
-                exportedOn: new Date().toISOString()
-            };
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
-            const downloadAnchorNode = document.createElement('a');
-            downloadAnchorNode.setAttribute("href", dataStr);
-            downloadAnchorNode.setAttribute("download", "EmotionSpace_data.json");
-            document.body.appendChild(downloadAnchorNode);
-            downloadAnchorNode.click();
-            downloadAnchorNode.remove();
-            showToast('Datos exportados.', 'success');
-        }
-
-        function deleteAllData() {
-            if (confirm('¡ADVERTENCIA! Esta acción borrará permanentemente todos tus datos (perfil, emociones, diario) de esta aplicación. ¿Estás seguro de que quieres continuar?')) {
-                localStorage.clear();
-                location.reload();
-            }
-        }
-
-        // ===================================
-        // BREATHING CIRCLE & EXERCISES
-        // ===================================
-        const breathingCircle = document.getElementById('breathingCircle');
-        let breathState = 'in';
-        setInterval(() => {
-            if (breathState === 'in') {
-                breathingCircle.textContent = 'Inhala';
-                breathState = 'out';
+        document.addEventListener('DOMContentLoaded', () => {
+            const hasProfile = localStorage.getItem('username');
+            if (!hasProfile) {
+                welcomeOverlay.classList.add('show');
+                setupEmojiSelector('welcomeEmojiSelector', 'welcomeSelectedEmojiInput');
             } else {
-                breathingCircle.textContent = 'Exhala';
-                breathState = 'in';
+                updateProfileDisplay();
             }
-        }, 2000);
 
-        // === NUEVAS FUNCIONES PARA RESPIRACIÓN GUIADA ===
-        let breathingInterval = null;
-        function startBreathingExercise(type) {
-            stopBreathingExercise(); // Asegura que no haya otro corriendo
-            openModal(null, 'breathing');
-            
-            const title = document.getElementById('breathingTitle');
-            const instruction = document.getElementById('breathingInstruction');
-            const progressBar = document.getElementById('breathingProgressBar');
-            
-            let sequence;
-            if (type === '4-7-8') {
-                title.textContent = 'Respiración 4-7-8';
-                sequence = [
-                    { phase: 'Inhala', duration: 4 },
-                    { phase: 'Sostén', duration: 7 },
-                    { phase: 'Exhala', duration: 8 }
-                ];
-            } else { // Cuadrada
-                title.textContent = 'Respiración Cuadrada';
-                sequence = [
-                    { phase: 'Inhala', duration: 4 },
-                    { phase: 'Sostén', duration: 4 },
-                    { phase: 'Exhala', duration: 4 },
-                    { phase: 'Sostén', duration: 4 }
-                ];
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (localStorage.getItem('darkMode') === 'true') {
+                darkModeToggle.checked = true;
+                document.body.classList.add('dark-mode');
             }
-            
-            let currentPhaseIndex = 0;
-            function runPhase() {
-                const phase = sequence[currentPhaseIndex];
-                instruction.textContent = `${phase.phase} (${phase.duration}s)`;
-                
-                let progress = 0;
-                progressBar.style.transition = 'none';
-                progressBar.style.width = '0%';
-                
-                const totalDuration = phase.duration * 1000;
-                const intervalTime = 100; // ms
-                
-                breathingInterval = setInterval(() => {
-                    progress += intervalTime;
-                    progressBar.style.transition = `width ${intervalTime / 1000}s linear`;
-                    progressBar.style.width = `${(progress / totalDuration) * 100}%`;
-
-                    if (progress >= totalDuration) {
-                        clearInterval(breathingInterval);
-                        currentPhaseIndex = (currentPhaseIndex + 1) % sequence.length;
-                        runPhase();
-                    }
-                }, intervalTime);
-            }
-            runPhase();
-        }
-
-        function stopBreathingExercise() {
-            clearInterval(breathingInterval);
-            breathingInterval = null;
-        }
-        
-        // ===================================
-        // === NUEVO: LÓGICA DE GRÁFICOS ===
-        // ===================================
-        function renderHistoryCharts() {
-            const entries = JSON.parse(localStorage.getItem('diaryEntries') || '[]');
-            
-            // Gráfico 1: Distribución de Estados de Ánimo
-            const moodCounts = entries.reduce((acc, entry) => {
-                acc[entry.mood] = (acc[entry.mood] || 0) + 1;
-                return acc;
-            }, {});
-            
-            const moodCtx = document.getElementById('moodDistributionChart').getContext('2d');
-            if (moodDistributionChart) moodDistributionChart.destroy();
-            moodDistributionChart = new Chart(moodCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: Object.keys(moodCounts),
-                    datasets: [{
-                        label: 'Estados de Ánimo',
-                        data: Object.values(moodCounts),
-                        backgroundColor: ['#fdd835', '#64b5f6', '#e57373', '#ba68c8', '#81c784', '#ffb74d', '#4dd0e1'],
-                    }]
-                },
-                options: { responsive: true, maintainAspectRatio: false }
-            });
-
-            // Gráfico 2: Actividad del Diario (Últimos 7 días)
-            const activityData = {};
-            for (let i = 6; i >= 0; i--) {
-                const d = new Date();
-                d.setDate(d.getDate() - i);
-                const key = d.toISOString().split('T')[0];
-                activityData[key] = 0;
-            }
-            entries.forEach(entry => {
-                if (activityData[entry.date] !== undefined) {
-                    activityData[entry.date]++;
+            darkModeToggle.addEventListener('change', () => {
+                if (darkModeToggle.checked) {
+                    document.body.classList.add('dark-mode');
+                    localStorage.setItem('darkMode', 'true');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    localStorage.setItem('darkMode', 'false');
                 }
             });
-
-            const activityCtx = document.getElementById('diaryActivityChart').getContext('2d');
-            if (diaryActivityChart) diaryActivityChart.destroy();
-            diaryActivityChart = new Chart(activityCtx, {
-                type: 'bar',
-                data: {
-                    labels: Object.keys(activityData).map(d => new Date(d).toLocaleDateString('es-ES', {weekday: 'short'})),
-                    datasets: [{
-                        label: 'Entradas por Día',
-                        data: Object.values(activityData),
-                        backgroundColor: '#667eea',
-                    }]
-                },
-                options: { 
-                    responsive: true, 
-                    maintainAspectRatio: false,
-                    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
-                }
-            });
-        }
-        
+            
+            renderHomeEmotions();
+            renderEmotions();
+            renderDiaryEntries();
+            updateStats();
+            setupEmojiSelector('emojiSelector', 'selectedEmojiInput');
+            getNewPrompt();
+            setupMemoryGame();
+            
+            diaryEntryForm.addEventListener('submit', saveDiaryEntry);
+            renderCharts();
+        });
     </script>
 </body>
 </html>
-
